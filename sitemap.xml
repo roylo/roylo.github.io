@@ -1,12 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://roylo.github.io/blog/2014/06/10/my-first-octopress-post/</loc>
+        <lastmod>2014-06-10T22:28:07+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://roylo.github.io/blog/archives/</loc>
-        <lastmod>2014-06-10T22:19:21+08:00</lastmod>
+        <lastmod>2014-06-10T22:28:07+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://roylo.github.io/fisrt-page/</loc>
+        <lastmod>2014-06-10T22:33:00+08:00</lastmod>
     </url>
     <url>
         <loc>http://roylo.github.io/</loc>
-        <lastmod>2014-06-10T22:19:21+08:00</lastmod>
+        <lastmod>2014-06-10T22:28:07+08:00</lastmod>
     </url>
     <url>
         <loc>http://roylo.github.io/robots.txt</loc>
