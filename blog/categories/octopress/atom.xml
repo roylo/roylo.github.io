@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Freaking RoyLo]]></title>
-  <link href="http://roylo.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Octopress | Freaking RoyLo]]></title>
+  <link href="http://roylo.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
   <updated>2014-06-29T17:46:39+08:00</updated>
   <id>http://roylo.github.io/</id>
@@ -36,32 +36,23 @@
 
 <h2>2. Octopress Setup</h2>
 
-<p>從 git 上把 octopress 抓下來</p>
+<p>從 git 上把 octopress 抓下來
+<code>ruby
+git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+</code></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">git</span> <span class="nb">clone</span> <span class="ss">git</span><span class="p">:</span><span class="sr">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">imathis</span><span class="o">/</span><span class="n">octopress</span><span class="o">.</span><span class="n">git</span> <span class="n">octopress</span>
-</span><span class='line'><span class="n">cd</span> <span class="n">octopress</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>安裝一些 dependencies, 其實我還不太懂這些&hellip;很懶得研究
+<code>
+gem install bundler
+rbenv rehash # If you use rbenv, rehash to be able to run the bundle command
+bundle install
+</code></p>
 
-
-<p>安裝一些 dependencies, 其實我還不太懂這些&hellip;很懶得研究</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="n">install</span> <span class="n">bundler</span>
-</span><span class='line'><span class="n">rbenv</span> <span class="n">rehash</span> <span class="c1"># If you use rbenv, rehash to be able to run the bundle command</span>
-</span><span class='line'><span class="n">bundle</span> <span class="n">install</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>安裝 default 的 Octopress theme</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">install</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<p>安裝 default 的 Octopress theme
+<code>
+rake install
+</code></p>
 
 <h2>3. 設定 Octopress Deploy</h2>
 
@@ -102,14 +93,13 @@ Markdown 的語法可以參考 <a href="http://markdown.tw/">markdown 語法</a>
 <p>透過 rake_post 指令, Octopress 會自動產生好一個 markdown, 並且放在 _posts/ 資料夾下 <br/>
 預設的 naming 會是 Y-m-d-title.markdown 的格式, 滿清楚的, 而且支援中文喔!!</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">new_post</span><span class="o">[</span><span class="s2">&quot;Zombie Ninjas Attack: A survivor&#39;s retrospective&quot;</span><span class="o">]</span>
-</span><span class='line'><span class="c1"># Creates source/_posts/2011-07-03-zombie-ninjas-attack-a-survivors-retrospective.markdown</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>```
+rake new_post[&ldquo;Zombie Ninjas Attack: A survivor&rsquo;s retrospective&rdquo;]</p>
 
+<h1>Creates source/_posts/2011-07-03-zombie-ninjas-attack-a-survivors-retrospective.markdown</h1>
 
-<p>而這個檔名也會決定你網站的 Url, 譬如說上面這個 example 的路徑就會是</p>
+<p>```
+而這個檔名也會決定你網站的 Url, 譬如說上面這個 example 的路徑就會是</p>
 
 <blockquote><p><a href="http://site.com/blog/2011/07/03/zombie-ninjas-attack-a-survivors-retrospective/index.html">http://site.com/blog/2011/07/03/zombie-ninjas-attack-a-survivors-retrospective/index.html</a></p></blockquote>
 
@@ -117,16 +107,16 @@ Markdown 的語法可以參考 <a href="http://markdown.tw/">markdown 語法</a>
 
 <p>除了常用到的 blog uri 之外, 你也可以自己建立 page</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">new_page</span><span class="o">[</span><span class="k">super</span><span class="o">-</span><span class="n">awesome</span><span class="o">]</span>
-</span><span class='line'><span class="c1"># creates /source/super-awesome/index.markdown</span>
-</span><span class='line'><span class="n">rake</span> <span class="n">new_page</span><span class="o">[</span><span class="k">super</span><span class="o">-</span><span class="n">awesome</span><span class="o">/</span><span class="n">page</span><span class="o">.</span><span class="n">html</span><span class="o">]</span>
-</span><span class='line'><span class="c1"># creates /source/super-awesome/page.html </span>
-</span></code></pre></td></tr></table></div></figure>
+<p>```
+rake new_page[super-awesome]</p>
 
+<h1>creates /source/super-awesome/index.markdown</h1>
+
+<p>rake new_page[super-awesome/page.html]</p>
+
+<h1>creates /source/super-awesome/page.html</h1>
+
+<p>```</p>
 
 <p>markdown 名稱若是 <code>abc.markdown</code>, Octopress 會 parse 建立成 <code>site.com/abc.html</code><br/>
 如果希望建立成 <code>site.com/abc/</code>, 就要把檔案弄成 <code>abc/index.markdown</code></p>
