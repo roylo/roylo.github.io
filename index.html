@@ -9,9 +9,7 @@
   <meta name="author" content="RoyLo">
 
   
-  <meta name="description" content="會寫這篇純粹是給健忘的自己怎麼使用 Octopress, 至少把一些基礎寫出來免得老是忘記重看
-首先從如何設定 Octopress 開始, 可以參考他們的官網
-讓可愛的小章魚教導你XD ">
+  <meta name="description" content="記錄一下工作上用到的 git 指令, 免得老是在查 Orz ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +71,47 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/06/30/git-ji-ben-zhi-ling/">Git 基本指令</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-30T14:47:41+08:00" pubdate data-updated="true">Jun 30<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>記錄一下工作上用到的 git 指令, 免得老是在查 Orz</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/30/git-ji-ben-zhi-ling/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/06/29/octopress-xin-shou-jiao-xue/">Octopress 新手教學</a></h1>
     
     
@@ -124,10 +163,43 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/06/30/git-ji-ben-zhi-ling/">Git 基本指令</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/06/29/octopress-xin-shou-jiao-xue/">Octopress 新手教學</a>
       </li>
     
   </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/roylo">@roylo</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'roylo',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
 
@@ -148,6 +220,15 @@
   
 
 
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 

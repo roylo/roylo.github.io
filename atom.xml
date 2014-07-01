@@ -4,7 +4,7 @@
   <title><![CDATA[Freaking RoyLo]]></title>
   <link href="http://roylo.github.io/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-06-29T17:46:39+08:00</updated>
+  <updated>2014-07-01T13:23:15+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[RoyLo]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Git 基本指令]]></title>
+    <link href="http://roylo.github.io/blog/2014/06/30/git-ji-ben-zhi-ling/"/>
+    <updated>2014-06-30T14:47:41+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/06/30/git-ji-ben-zhi-ling</id>
+    <content type="html"><![CDATA[<p>記錄一下工作上用到的 git 指令, 免得老是在查 Orz</p>
+
+<!-- more -->
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'> <span class="c"># local 切出一個 branch</span>
+</span><span class='line'> git checkout &lt;branch_name&gt;
+</span><span class='line'>
+</span><span class='line'> <span class="c"># delete local 的 branch</span>
+</span><span class='line'> git branch delete -d &lt;branch_name&gt;
+</span><span class='line'>
+</span><span class='line'> <span class="c"># delete remote 的 branch</span>
+</span><span class='line'> git push origin --delete &lt;branch_name&gt;
+</span><span class='line'>
+</span><span class='line'> <span class="c"># 在 local 建立一個新的 branch</span>
+</span><span class='line'> git checkoutout -b &lt;branch_name&gt;
+</span><span class='line'>
+</span><span class='line'> <span class="c"># push local branch 到 remote server</span>
+</span><span class='line'> git push origin &lt;branch_name&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>如何 checkout remote branch 回 local 端?</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'> <span class="c"># after git version 1.6.6, 可以直接下</span>
+</span><span class='line'> git fetch
+</span><span class='line'> git checkout &lt;branch_name&gt;
+</span><span class='line'>
+</span><span class='line'> <span class="c"># ==========================================</span>
+</span><span class='line'>
+</span><span class='line'> <span class="c"># old git version</span>
+</span><span class='line'> git fetch origin
+</span><span class='line'> <span class="c"># 查詢哪些 branch 可以 checkout</span>
+</span><span class='line'> git branch -v -a
+</span><span class='line'> <span class="c"># checkout 回 local 端</span>
+</span><span class='line'> git checkout -b &lt;branch_name&gt; origin/&lt;branch_name&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress 新手教學]]></title>
