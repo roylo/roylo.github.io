@@ -4,7 +4,7 @@
   <title><![CDATA[Freaking RoyLo]]></title>
   <link href="http://roylo.github.io/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-07-01T13:23:15+08:00</updated>
+  <updated>2014-07-03T07:43:12+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[RoyLo]]></name>
@@ -12,6 +12,263 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Android Learning-0]]></title>
+    <link href="http://roylo.github.io/blog/2014/07/03/android-learning-0/"/>
+    <updated>2014-07-03T01:45:04+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/07/03/android-learning-0</id>
+    <content type="html"><![CDATA[<p>android training 速寫筆記 &ndash; 0</p>
+
+<!-- more -->
+
+
+<h2>相關知識</h2>
+
+<h3>Android 四大元件</h3>
+
+<ul>
+<li>透過 Intent 去操作各個元件</li>
+<li>Acitvity
+
+<ul>
+<li>控制 UI</li>
+<li>控制程式狀態 (active)</li>
+<li>Fragment (替換螢幕上的 component)</li>
+</ul>
+</li>
+<li>Service
+
+<ul>
+<li>Start/Stop</li>
+<li>onBind</li>
+<li>不會因為退到背景或是關上螢幕而暫停</li>
+</ul>
+</li>
+<li>Broadcast Receiver
+
+<ul>
+<li>GCM (google cloud message)</li>
+<li>APN, WPN</li>
+</ul>
+</li>
+<li>Content Provider
+
+<ul>
+<li>提供 App 之間資源交換</li>
+<li>Intent 不會直接來驅動</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Eclipse notation</h3>
+
+<ul>
+<li>綠C => class</li>
+<li>紫I => interface</li>
+<li>A => abstract</li>
+<li>F => Final</li>
+<li>S => Static</li>
+<li>member function => method (實心)</li>
+<li>member variable => field (空心)</li>
+<li>實心三角形 Override (parant class)</li>
+<li>空心三角形 Override (interface method)</li>
+</ul>
+
+
+<h3>developement env setup</h3>
+
+<ul>
+<li>下載 android ADT from <a href="http://developer.android.com/sdk/index.html">ADT download</a></li>
+<li>解壓縮, 開啟資料夾內的 Eclipse</li>
+<li>點選右上角的 open perspective, 開啓 Java</li>
+<li>開啓左上角的 Android SDK manager 下載需要的 SDK tools</li>
+</ul>
+
+
+<h3>資料夾相關</h3>
+
+<ul>
+<li>in ~/adt/sdk/
+
+<ul>
+<li>tools &ndash;> 版本無關 (sqlite3</li>
+<li>platform-tools &ndash;> 版本相關 (adb</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>new project</h3>
+
+<ul>
+<li>Min SDK: Device 最早版本
+
+<ul>
+<li>in AndroManifest.xml</li>
+</ul>
+</li>
+<li>Target SDK: Device 預期版本
+
+<ul>
+<li>in AndroManifest.xml</li>
+</ul>
+</li>
+<li>compile with: SDK binary
+
+<ul>
+<li>with Eclipse 專案 (選用穩定的 release</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Hello World</h3>
+
+<ol>
+<li>layout (XML) => hello World</li>
+<li>Main Activity extends Activity</li>
+<li>Activity load layout</li>
+<li>add to AndroManifest.xml</li>
+</ol>
+
+
+<h3>ADB</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'> <span class="c"># 查看 adb 有哪些 devices</span>
+</span><span class='line'> adb devices
+</span><span class='line'>
+</span><span class='line'> <span class="c"># 移除 app (ex. com.mycompany.myapp</span>
+</span><span class='line'> adb uninstall &lt;pkg name&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>eclipse</h3>
+
+<h4>常用快捷鍵</h4>
+
+<p>organize input: command + shift + o
+Line Comments: command + /
+Line Move: 選取block , alt + up/ alt + down
+Auto format: command + shift + f</p>
+
+<h4>小技巧</h4>
+
+<ul>
+<li>type hierarchy
+
+<ul>
+<li>可以看到 class 的 hierarchy</li>
+</ul>
+</li>
+<li>auto complete &ndash;> content assist</li>
+<li>按住 command + 左鍵點 class name &ndash;> 打開對應的 class src code</li>
+</ul>
+
+
+<h3>Other knowledge</h3>
+
+<ul>
+<li><p>CPU</p>
+
+<ul>
+<li>A (application)</li>
+<li>B (binary)</li>
+<li>I (interface)
+通常會有 armv7a, intel.x86, (mips from 大陸)</li>
+</ul>
+</li>
+<li><p>ADT: Android developement Tool</p></li>
+<li>ADB: Android Debug Briedge</li>
+<li><p>AVD: Android Virtual Device</p></li>
+<li><p>每一個 app 都是 apk 檔</p>
+
+<ul>
+<li>壓縮檔, 解開會是 dir</li>
+<li>/myapp 裡有 AndroManifest.xml, 裡面寫有 app 相關的設定
+
+<ul>
+<li>package &ndash;> unique name</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>genymotion
+
+<ul>
+<li>android 模擬器</li>
+<li>x86 架構, 在 mac 上面跑快很多 orz</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android Learning-1]]></title>
+    <link href="http://roylo.github.io/blog/2014/07/02/android-learning-1/"/>
+    <updated>2014-07-02T15:28:58+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/07/02/android-learning-1</id>
+    <content type="html"><![CDATA[<p>android training 速寫筆記 &ndash; 1</p>
+
+<!-- more -->
+
+
+<h2>Android 相關</h2>
+
+<ul>
+<li>acore: android core</li>
+<li>onXXXX function 都是 callback function, 僅會由 android 來呼叫</li>
+<li>ViewGroup class
+
+<ul>
+<li>處理 layout</li>
+<li>使用相對的方式去做大小設定</li>
+</ul>
+</li>
+<li>透過 xml 的描述定義螢幕顯示</li>
+</ul>
+
+
+<h2>使用者介面實作</h2>
+
+<ul>
+<li><p>xxx.xml</p>
+
+<ul>
+<li>lowercase</li>
+<li>no special character</li>
+<li>number cna&rsquo;t be leading</li>
+</ul>
+</li>
+<li><p>layout 大小</p>
+
+<ul>
+<li>match parent (大)
+
+<ul>
+<li>填滿 parent</li>
+</ul>
+</li>
+<li>wrap content (小)
+
+<ul>
+<li>只要大小可以把內容包起來就好</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Git 基本指令]]></title>
