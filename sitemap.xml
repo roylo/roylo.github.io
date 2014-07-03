@@ -2,30 +2,38 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://roylo.github.io/blog/2014/06/29/octopress-xin-shou-jiao-xue/</loc>
-        <lastmod>2014-06-29T17:46:11+08:00</lastmod>
+        <lastmod>2014-07-03T08:01:36+08:00</lastmod>
     </url>
     <url>
         <loc>http://roylo.github.io/blog/2014/06/30/git-ji-ben-zhi-ling/</loc>
-        <lastmod>2014-07-01T09:55:49+08:00</lastmod>
+        <lastmod>2014-07-03T08:01:36+08:00</lastmod>
     </url>
     <url>
         <loc>http://roylo.github.io/blog/2014/07/02/android-learning-1/</loc>
-        <lastmod>2014-07-03T07:43:01+08:00</lastmod>
+        <lastmod>2014-07-03T08:01:36+08:00</lastmod>
     </url>
     <url>
         <loc>http://roylo.github.io/blog/2014/07/03/android-learning-0/</loc>
-        <lastmod>2014-07-03T07:40:12+08:00</lastmod>
+        <lastmod>2014-07-03T08:01:36+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://roylo.github.io/archives/</loc>
+        <lastmod>2014-07-03T08:01:36+08:00</lastmod>
     </url>
     <url>
         <loc>http://roylo.github.io/blog/archives/</loc>
-        <lastmod>2014-07-03T07:43:01+08:00</lastmod>
+        <lastmod>2014-07-03T08:01:36+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://roylo.github.io/blog/</loc>
+        <lastmod>2014-07-03T08:01:36+08:00</lastmod>
     </url>
     <url>
         <loc>http://roylo.github.io/</loc>
-        <lastmod>2014-07-03T07:43:01+08:00</lastmod>
+        <lastmod>2014-07-03T08:01:36+08:00</lastmod>
     </url>
     <url>
         <loc>http://roylo.github.io/robots.txt</loc>
-        <lastmod>2014-06-10T22:19:21+08:00</lastmod>
+        <lastmod>2014-07-03T08:01:36+08:00</lastmod>
     </url>
 </urlset>
