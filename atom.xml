@@ -4,7 +4,7 @@
   <title><![CDATA[Freaking RoyLo]]></title>
   <link href="http://roylo.github.io/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-07-03T08:01:48+08:00</updated>
+  <updated>2014-07-03T08:10:44+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[RoyLo]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Themes]]></title>
+    <link href="http://roylo.github.io/blog/2014/07/03/octopress-themes/"/>
+    <updated>2014-07-03T08:06:48+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/07/03/octopress-themes</id>
+    <content type="html"><![CDATA[<p>想幫 octopress 換個皮, 至少跟 default 不一樣XD</p>
+
+<p><a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a> <br />
+這邊搜集了不少第三方 themes <br />
+就隨便玩玩啦~ <br /></p>
+
+<p>裝的方法也很簡單</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd </span>octopress
+</span><span class='line'>git clone GIT_URL .themes/THEME_NAME
+</span><span class='line'>rake install<span class="o">[</span><span class="s1">&#39;THEME_NAME&#39;</span><span class="o">]</span>
+</span><span class='line'>rake generate
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>有興趣也可以換換主題給自己不一樣的心情囉~ <br />
+ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Android Learning-0]]></title>
