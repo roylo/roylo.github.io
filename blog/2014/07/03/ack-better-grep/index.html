@@ -5,16 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Octopress Themes - Freaking RoyLo</title>
+  <title>Ack - Better Grep! - Freaking RoyLo</title>
   <meta name="author" content="RoyLo">
 
   
-  <meta name="description" content="想幫 octopress 換個皮, 至少跟 default 不一樣XD 3rd Party Octopress Themes 這邊搜集了不少第三方 themes 就隨便玩玩啦~ 裝的方法也很簡單 1
-2
-3
-4
-cd octopress
-git clone GIT_URL .themes/ &hellip;">
+  <meta name="description" content="Ack &ndash; 專門給 programmer 用的 grep !
+晚上隨便看看網頁吸收新知, 看到了這個 ack 感覺對工作上會很有幫助啊!!
+稍微試了一下, 感覺的確是滿不錯的, 取代 grep 的功能 ^o^ 下面就來看看怎麼使用 ack 吧~ 安裝 ack ack &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,7 +20,7 @@ git clone GIT_URL .themes/ &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://roylo.github.io/blog/2014/07/03/octopress-themes">
+  <link rel="canonical" href="http://roylo.github.io/blog/2014/07/03/ack-better-grep">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Freaking RoyLo" type="application/atom+xml">
@@ -66,7 +63,7 @@ git clone GIT_URL .themes/ &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Octopress Themes</h1>
+      <h1 class="entry-title">Ack - Better Grep!</h1>
     
     
       <p class="meta">
@@ -82,7 +79,7 @@ git clone GIT_URL .themes/ &hellip;">
   
 
 
-<time datetime="2014-07-03T08:06:48+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2014</time>
+<time datetime="2014-07-03T22:51:36+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://roylo.github.io">Comments</a>
@@ -92,27 +89,98 @@ git clone GIT_URL .themes/ &hellip;">
   </header>
 
 
-<div class="entry-content"><p>想幫 octopress 換個皮, 至少跟 default 不一樣XD</p>
+<div class="entry-content"><p>Ack &ndash; 專門給 programmer 用的 grep !<br/>
+晚上隨便看看網頁吸收新知, 看到了這個 <a href="http://beyondgrep.com/">ack</a> 感覺對工作上會很有幫助啊!!<br/>
+稍微試了一下, 感覺的確是滿不錯的, 取代 grep 的功能 ^o^</p>
 
-<p><a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a> <br />
-這邊搜集了不少第三方 themes <br />
-就隨便玩玩啦~ <br /></p>
+<p>下面就來看看怎麼使用 ack 吧~</p>
 
-<p>裝的方法也很簡單</p>
+<!-- more -->
+
+
+<h2>安裝 ack</h2>
+
+<p>ack 提供很多種安裝的方式, 各種平台上幾乎都有 pkg<br/>
+以我自己而言, mac 上可以直接用 homebrew 安裝<br/>
+其他平台可以參考<a href="http://beyondgrep.com/install/">這裡</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>brew install ack
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>另外 ack 也提供直接 curl 下載執行檔便於攜帶, 只要執行下面的指令 <br />
+ack 就會放到 ~/bin/ack 囉~</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>curl http://beyondgrep.com/ack-2.12-single-file &gt; ~/bin/ack <span class="o">&amp;&amp;</span> chmod 0755 !#:3
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Why ack?</h2>
+
+<p>ack 看起來有幾個不錯的效果, 截取一些對我有吸引力的部分</p>
+
+<ul>
+<li>快! (最重要的事情</li>
+<li>自動省略一些像是 version control 的dir(還有一些其他的), 像 grep 每次搜尋 .svn 都讓我惱火</li>
+<li>portable, ack 是純 perl, 只需要 perl5 就可以執行</li>
+<li>可以指定搜尋的 file type 還滿方便</li>
+<li>可以拿來找某個 type 的 file list</li>
+<li>ack 三個字比 grep 四個字少打一個字XDDD, 官網的這項優點讓我笑了</li>
+</ul>
+
+
+<h2>ack 簡易教學</h2>
+
+<p>功能太多, 列一些看到不錯的 <br />
+詳細可以參考 <a href="http://beyondgrep.com/documentation/ack-2.12-man.html">ack manual</a></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd </span>octopress
-</span><span class='line'>git clone GIT_URL .themes/THEME_NAME
-</span><span class='line'>rake install<span class="o">[</span><span class="s1">&#39;THEME_NAME&#39;</span><span class="o">]</span>
-</span><span class='line'>rake generate
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># ack ignore CVS, .svn, .git, and other ignored directories</span>
+</span><span class='line'>ack <span class="s1">&#39;search string&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 只搜尋某種 file type, ack --type string</span>
+</span><span class='line'>ack --php <span class="nb">test</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 列出將會搜尋的 filename, 但不真的 search</span>
+</span><span class='line'>ack -f
+</span><span class='line'><span class="c"># 搭配一下 --type 就可以拿來搜尋 filename, 或是做一些其他事情</span>
+</span><span class='line'><span class="c"># remove all files of type html</span>
+</span><span class='line'>ack -f --html --print0 | xargs -0 rm -f
+</span><span class='line'>
+</span><span class='line'><span class="c"># 搜尋所有的檔案不要忽略</span>
+</span><span class='line'>ack -a <span class="nb">test</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>有興趣也可以換換主題給自己不一樣的心情囉~ <br />
-ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
+<h2>Compare to GNU global</h2>
+
+<p>跟 global 相比, 我覺得用處上還是有些區別<br/>
+global 基本上是要建 index file<br/>
+這對 code base 很大的時候是相當有用的, 加快搜尋的速度<br/>
+但缺點也是因為他要建 index file, 有時候並不方便 (畢竟我不會到處去建 index)</p>
+
+<p>ack 對比之下更接近 grep 的用法, 可以隨時 search 會方便的多<br/>
+尤其在公司的 server 上不可能用 global, 這時候就是 ack 發揮效用的時候了!!</p>
+
+<h2>ack for VIM!</h2>
+
+<p>最後就是 ack 還有做 vim 的 plugin<br/>
+可以參考一下 <a href="http://www.vim.org/scripts/script.php?script_id=2572">ack for vim</a></p>
 </div>
 
 
@@ -135,12 +203,12 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
   
 
 
-<time datetime="2014-07-03T08:06:48+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2014</time>
+<time datetime="2014-07-03T22:51:36+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+    <a class='category' href='/blog/categories/cmd/'>cmd</a>, <a class='category' href='/blog/categories/shell/'>shell</a>, <a class='category' href='/blog/categories/unix/'>unix</a>
   
 </span>
 
@@ -149,7 +217,7 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://roylo.github.io/blog/2014/07/03/octopress-themes/" data-via="joeblack1986@gmail.com" data-counturl="http://roylo.github.io/blog/2014/07/03/octopress-themes/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://roylo.github.io/blog/2014/07/03/ack-better-grep/" data-via="joeblack1986@gmail.com" data-counturl="http://roylo.github.io/blog/2014/07/03/ack-better-grep/" >Tweet</a>
   
   
   
@@ -160,10 +228,8 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/07/03/android-learning-0/" title="Previous Post: Android Learning-0">&laquo; Android Learning-0</a>
+        <a class="basic-alignment left" href="/blog/2014/07/03/octopress-themes/" title="Previous Post: octopress themes">&laquo; octopress themes</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/07/03/ack-better-grep/" title="Next Post: ack - better grep!">ack - better grep! &raquo;</a>
       
     </p>
   </footer>
@@ -267,8 +333,8 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://roylo.github.io/blog/2014/07/03/octopress-themes/';
-        var disqus_url = 'http://roylo.github.io/blog/2014/07/03/octopress-themes/';
+        var disqus_identifier = 'http://roylo.github.io/blog/2014/07/03/ack-better-grep/';
+        var disqus_url = 'http://roylo.github.io/blog/2014/07/03/ack-better-grep/';
         var disqus_script = 'embed.js';
       
     (function () {
