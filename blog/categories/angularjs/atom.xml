@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: AngularJs | Freaking RoyLo]]></title>
+  <link href="http://roylo.github.io/blog/categories/angularjs/atom.xml" rel="self"/>
+  <link href="http://roylo.github.io/"/>
+  <updated>2014-07-07T23:07:57+08:00</updated>
+  <id>http://roylo.github.io/</id>
+  <author>
+    <name><![CDATA[RoyLo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[AngularJs Learning Note-1]]></title>
+    <link href="http://roylo.github.io/blog/2014/07/07/angularjs-learning-note-1/"/>
+    <updated>2014-07-07T22:22:54+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/07/07/angularjs-learning-note-1</id>
+    <content type="html"><![CDATA[<p>這是 code school AngularJs 的一些個人筆記, 希望我可以好好學習！</p>
+
+<h2>Prepare env</h2>
+
+<ul>
+<li>Download <a href="http://angularjs.org/">AngularJs</a>
+
+<ul>
+<li>need angular.min.js</li>
+</ul>
+</li>
+<li>Download <a href="http://getbootstrap.com/">Twitter Bootstrap</a>
+
+<ul>
+<li>need Bootstrap.min.css</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Modules</h2>
+
+<ul>
+<li>write pieces of angular application.</li>
+<li>define dependencies for our app.</li>
+</ul>
+
+
+<p>``` html</p>
+
+<h1>ng-app &ndash;> attach the Application Module to the page, run this module when the document loads</h1>
+
+<p><html ng-app="store"></p>
+
+<h1>ng-controller &ndash;> attach a controller function to the page</h1>
+
+<p><body ng-controller="StoreController as store">i
+```</p>
+
+<h2>Expressions</h2>
+
+<p>I am 10</p>
+
+<blockquote><p>I am 4</p></blockquote>
+
+<p>Hello you</p>
+
+<blockquote><p></p></blockquote>
+
+<p>More <a href="http://docs.angularjs.org/guide/expression">Operations</a></p>
+
+<h2>Sample app code</h2>
+
+<p>``` javascript
+// app.js
+(function(){
+   var app = angular.module(&lsquo;store&rsquo;, []);
+   app.controller(&lsquo;StoreController&rsquo;, function(){</p>
+
+<pre><code>  this.product = gem;
+</code></pre>
+
+<p>   });</p>
+
+<p>   // Sample javascript obj
+   var gem = {</p>
+
+<pre><code>  name: "Dodecahedron',
+  price: 2.95,
+  description: '.....',
+</code></pre>
+
+<p>   }</p>
+
+<p>})();</p>
+
+<p>```</p>
+
+<p>
+``` html
+<body>
+   <div ng-controller="StoreController as store"></p>
+
+<pre><code>  &lt;h1&gt; {{store.product.name}} &lt;/h1&gt;
+  &lt;h2&gt; ${{store.product.price}} &lt;/h2&gt;
+  ...
+</code></pre>
+
+<p>   </div>
+   {{store.product.name}} &lt;&ndash; won&rsquo;t work !!
+   <script type="text/javascript" src="angular.min.js"></script>
+   <script type="text/javascript" src="app.js"></script>
+```
+</p>
+]]></content>
+  </entry>
+  
+</feed>
