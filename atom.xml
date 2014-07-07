@@ -4,7 +4,7 @@
   <title><![CDATA[Freaking RoyLo]]></title>
   <link href="http://roylo.github.io/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-07-07T23:07:57+08:00</updated>
+  <updated>2014-07-08T06:49:21+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[RoyLo]]></name>
@@ -46,6 +46,9 @@
 </ul>
 
 
+<!-- more -->
+
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -55,19 +58,24 @@
 </span><span class='line'><span class="nt">&lt;html</span> <span class="na">ng-app=</span><span class="s">&quot;store&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>
 </span><span class='line'># ng-controller -&gt; attach a controller function to the page
-</span><span class='line'><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">&quot;StoreController as store&quot;</span><span class="nt">&gt;</span>i
+</span><span class='line'><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">&quot;StoreController as store&quot;</span><span class="nt">&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Expressions</h2>
 
-<p>I am 10</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'># I am 10
+</span><span class='line'>I am {{4 + 6}}
+</span><span class='line'>
+</span><span class='line'># Hello you
+</span><span class='line'>{{&quot;Hello&quot; + &quot;you&quot;}}
+</span></code></pre></td></tr></table></div></figure>
 
-<blockquote><p>I am {{4 + 6}}</p></blockquote>
-
-<p>Hello you</p>
-
-<blockquote><p>{{&ldquo;Hello&rdquo; + &ldquo;you&rdquo;}}</p></blockquote>
 
 <p>More <a href="http://docs.angularjs.org/guide/expression">Operations</a></p>
 
@@ -129,7 +137,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<h2>built in directives</h2>
 ]]></content>
   </entry>
   

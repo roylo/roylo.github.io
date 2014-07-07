@@ -4,7 +4,7 @@
   <title><![CDATA[Category: AngularJs | Freaking RoyLo]]></title>
   <link href="http://roylo.github.io/blog/categories/angularjs/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-07-07T23:07:57+08:00</updated>
+  <updated>2014-07-08T06:49:21+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[RoyLo]]></name>
@@ -46,6 +46,9 @@
 </ul>
 
 
+<!-- more -->
+
+
 <p>``` html</p>
 
 <h1>ng-app &ndash;> attach the Application Module to the page, run this module when the document loads</h1>
@@ -54,18 +57,23 @@
 
 <h1>ng-controller &ndash;> attach a controller function to the page</h1>
 
-<p><body ng-controller="StoreController as store">i
+<p><body ng-controller="StoreController as store">
 ```</p>
 
 <h2>Expressions</h2>
 
-<p>I am 10</p>
+<p>
+``` html</p>
 
-<blockquote><p>I am 4</p></blockquote>
+<h1>I am 10</h1>
 
-<p>Hello you</p>
+<p>I am {{4 + 6}}</p>
 
-<blockquote><p></p></blockquote>
+<h1>Hello you</h1>
+
+<p>{{&ldquo;Hello&rdquo; + &ldquo;you&rdquo;}}
+```
+</p>
 
 <p>More <a href="http://docs.angularjs.org/guide/expression">Operations</a></p>
 
@@ -112,6 +120,8 @@
    <script type="text/javascript" src="app.js"></script>
 ```
 </p>
+
+<h2>built in directives</h2>
 ]]></content>
   </entry>
   

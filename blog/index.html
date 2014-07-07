@@ -117,92 +117,12 @@
 </ul>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'># ng-app -&gt; attach the Application Module to the page, run this module when the document loads
-</span><span class='line'><span class="nt">&lt;html</span> <span class="na">ng-app=</span><span class="s">&quot;store&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>
-</span><span class='line'># ng-controller -&gt; attach a controller function to the page
-</span><span class='line'><span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">&quot;StoreController as store&quot;</span><span class="nt">&gt;</span>i
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Expressions</h2>
-
-<p>I am 10</p>
-
-<blockquote><p>I am {{4 + 6}}</p></blockquote>
-
-<p>Hello you</p>
-
-<blockquote><p>{{&ldquo;Hello&rdquo; + &ldquo;you&rdquo;}}</p></blockquote>
-
-<p>More <a href="http://docs.angularjs.org/guide/expression">Operations</a></p>
-
-<h2>Sample app code</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// app.js</span>
-</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>   <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="p">[]);</span>
-</span><span class='line'>   <span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;StoreController&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">product</span> <span class="o">=</span> <span class="nx">gem</span><span class="p">;</span>
-</span><span class='line'>   <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="c1">// Sample javascript obj</span>
-</span><span class='line'>   <span class="kd">var</span> <span class="nx">gem</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="err">&quot;</span><span class="nx">Dodecahedron</span><span class="s1">&#39;,</span>
-</span><span class='line'><span class="s1">      price: 2.95,</span>
-</span><span class='line'><span class="s1">      description: &#39;</span><span class="p">.....</span><span class="err">&#39;</span><span class="p">,</span>
-</span><span class='line'>   <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">})();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;body&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;StoreController as store&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;h1&gt;</span> {{store.product.name}} <span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;h2&gt;</span> ${{store.product.price}} <span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'>      ...
-</span><span class='line'>   <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>   {{store.product.name}} <span class="err">&lt;</span>- won&#39;t work !!
-</span><span class='line'>   <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/07/07/angularjs-learning-note-1/">Read on &rarr;</a>
+    </footer>
   
 
 </article>
