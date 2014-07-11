@@ -5,14 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Android Learning-0 - Freaking RoyLo</title>
+  <title>AngularJs Learning Note-2 - Freaking RoyLo</title>
   <meta name="author" content="RoyLo">
 
   
-  <meta name="description" content="android training 速寫筆記 &ndash; 0 相關知識 Android 四大元件 透過 Intent 去操作各個元件
-Acitvity 控制 UI
-控制程式狀態 (active)
-Fragment (替換螢幕上的 component) Service Start/Stop &hellip;">
+  <meta name="description" content="Filter use pipe &ldquo;|&rdquo; the following example will give price the dolloar sign(localized), Specifies number of decimals 1
+&lt;em class=&quot; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +19,7 @@ Fragment (替換螢幕上的 component) Service Start/Stop &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://roylo.github.io/blog/2014/07/03/android-learning-0">
+  <link rel="canonical" href="http://roylo.github.io/blog/2014/07/09/angularjs-learning-note-2">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Freaking RoyLo" type="application/atom+xml">
@@ -65,7 +63,7 @@ Fragment (替換螢幕上的 component) Service Start/Stop &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Android Learning-0</h1>
+      <h1 class="entry-title">AngularJs Learning Note-2</h1>
     
     
       <p class="meta">
@@ -81,7 +79,7 @@ Fragment (替換螢幕上的 component) Service Start/Stop &hellip;">
   
 
 
-<time datetime="2014-07-03T01:45:04+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2014</time>
+<time datetime="2014-07-09T18:31:33+08:00" pubdate data-updated="true">Jul 9<span>th</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://roylo.github.io">Comments</a>
@@ -91,192 +89,124 @@ Fragment (替換螢幕上的 component) Service Start/Stop &hellip;">
   </header>
 
 
-<div class="entry-content"><p>android training 速寫筆記 &ndash; 0</p>
-
-<!-- more -->
-
-
-<h2>相關知識</h2>
-
-<h3>Android 四大元件</h3>
+<div class="entry-content"><h2>Filter</h2>
 
 <ul>
-<li>透過 Intent 去操作各個元件</li>
-<li>Acitvity
+<li>use pipe &ldquo;|&rdquo;
 
 <ul>
-<li>控制 UI</li>
-<li>控制程式狀態 (active)</li>
-<li>Fragment (替換螢幕上的 component)</li>
-</ul>
-</li>
-<li>Service
-
-<ul>
-<li>Start/Stop</li>
-<li>onBind</li>
-<li>不會因為退到背景或是關上螢幕而暫停</li>
-</ul>
-</li>
-<li>Broadcast Receiver
-
-<ul>
-<li>GCM (google cloud message)</li>
-<li>APN, WPN</li>
-</ul>
-</li>
-<li>Content Provider
-
-<ul>
-<li>提供 App 之間資源交換</li>
-<li>Intent 不會直接來驅動</li>
+<li>the following example will give price the dolloar sign(localized), Specifies number of decimals</li>
 </ul>
 </li>
 </ul>
 
 
-<h3>Eclipse notation</h3>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;em</span> <span class="na">class=</span><span class="s">&quot;pull-right&quot;</span><span class="nt">&gt;</span>{{product.price | currency}}<span class="nt">&lt;/em&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <ul>
-<li>綠C => class</li>
-<li>紫I => interface</li>
-<li>A => abstract</li>
-<li>F => Final</li>
-<li>S => Static</li>
-<li>member function => method (實心)</li>
-<li>member variable => field (空心)</li>
-<li>實心三角形 Override (parant class)</li>
-<li>空心三角形 Override (interface method)</li>
-</ul>
-
-
-<h3>developement env setup</h3>
+<li>Formatting with filters
 
 <ul>
-<li>下載 android ADT from <a href="http://developer.android.com/sdk/index.html">ADT download</a></li>
-<li>解壓縮, 開啟資料夾內的 Eclipse</li>
-<li>點選右上角的 open perspective, 開啓 Java</li>
-<li>開啓左上角的 Android SDK manager 下載需要的 SDK tools</li>
-</ul>
-
-
-<h3>資料夾相關</h3>
-
-<ul>
-<li>in ~/adt/sdk/
-
-<ul>
-<li>tools &ndash;> 版本無關 (sqlite3</li>
-<li>platform-tools &ndash;> 版本相關 (adb</li>
+<li>Our Recipe <code>{{ data | filter:options }}</code></li>
+<li>date example
+<code>{{'1388123412323' | date:'MM/dd/yyyy @ h:mma'}}</code> => 12/27/2013 @ 12:50AM</li>
+<li>uppercase &amp; lowercase
+`{{&lsquo;octagon gem&rsquo; | uppercase}} => OCTAGON GEM</li>
+<li>limitTo
+<code>{{'My Description' | limitTo:8}}</code> => My Descr<br/>
+<code>&lt;li ng-repeat="product in store.products | limitTo:3"&gt;</code></li>
+<li>orderBy (descending order)
+<code>&lt;li ng-repeat="product in store.products | orderBy:'-price'"&gt;</code></li>
 </ul>
 </li>
 </ul>
 
 
-<h3>new project</h3>
+<h2>images</h2>
 
 <ul>
-<li>Min SDK: Device 最早版本
+<li>Do not use <code>&lt;img src="{{product.images[0].full}}"/&gt;</code>
 
 <ul>
-<li>in AndroManifest.xml</li>
+<li>the browser tries to load the image before the Expression evaluates</li>
 </ul>
 </li>
-<li>Target SDK: Device 預期版本
+<li>Use <code>&lt;img ng-src="{{product.images[0].full}}"/&gt;</code></li>
+</ul>
+
+
+<h2>tabs</h2>
 
 <ul>
-<li>in AndroManifest.xml</li>
-</ul>
-</li>
-<li>compile with: SDK binary
+<li>When ng-click changes the value of tab
 
 <ul>
-<li>with Eclipse 專案 (選用穩定的 release</li>
+<li>the {{tab}} expression auto gets updated.</li>
+</ul>
+</li>
+<li>Expressions define a 2-way Data binding
+
+<ul>
+<li>means Expressions are re-evaluated when a property changes.</li>
 </ul>
 </li>
 </ul>
 
-
-<h3>Hello World</h3>
-
-<ol>
-<li>layout (XML) => hello World</li>
-<li>Main Activity extends Activity</li>
-<li>Activity load layout</li>
-<li>add to AndroManifest.xml</li>
-</ol>
-
-
-<h3>ADB</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'> <span class="c"># 查看 adb 有哪些 devices</span>
-</span><span class='line'> adb devices
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;section&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-pills&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;a</span> <span class="na">href</span> <span class="na">ng-click=</span><span class="s">&quot;tab = 1&quot;</span><span class="nt">&gt;</span>Description<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;a</span> <span class="na">href</span> <span class="na">ng-click=</span><span class="s">&quot;tab = 2&quot;</span><span class="nt">&gt;</span>aaaa<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;a</span> <span class="na">href</span> <span class="na">ng-click=</span><span class="s">&quot;tab = 3&quot;</span><span class="nt">&gt;</span>bbbb<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>    {{tab}}
+</span><span class='line'><span class="nt">&lt;/section&gt;</span>
 </span><span class='line'>
-</span><span class='line'> <span class="c"># 移除 app (ex. com.mycompany.myapp</span>
-</span><span class='line'> adb uninstall &lt;pkg name&gt;
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel&quot;</span> <span class="na">ng-show=</span><span class="s">&quot;tab === 1&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    xxxxx1
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel&quot;</span> <span class="na">ng-show=</span><span class="s">&quot;tab === 2&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    xxxxx2
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel&quot;</span> <span class="na">ng-show=</span><span class="s">&quot;tab === 3&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    xxxxx3
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>eclipse</h3>
-
-<h4>常用快捷鍵</h4>
-
-<p>organize input: command + shift + o
-Line Comments: command + /
-Line Move: 選取block , alt + up/ alt + down
-Auto format: command + shift + f</p>
-
-<h4>小技巧</h4>
+<ul>
+<li><p>How to set initial value of tab?</p>
 
 <ul>
-<li>type hierarchy
-
-<ul>
-<li>可以看到 class 的 hierarchy</li>
+<li><code>&lt;section ng-init="tab = "&gt;</code></li>
 </ul>
 </li>
-<li>auto complete &ndash;> content assist</li>
-<li>按住 command + 左鍵點 class name &ndash;> 打開對應的 class src code</li>
-</ul>
-
-
-<h3>Other knowledge</h3>
+<li><p>ng-class directive</p>
 
 <ul>
-<li><p>CPU</p>
-
-<ul>
-<li>A (application)</li>
-<li>B (binary)</li>
-<li>I (interface)
-通常會有 armv7a, intel.x86, (mips from 大陸)</li>
-</ul>
-</li>
-<li><p>ADT: Android developement Tool</p></li>
-<li>ADB: Android Debug Briedge</li>
-<li><p>AVD: Android Virtual Device</p></li>
-<li><p>每一個 app 都是 apk 檔</p>
-
-<ul>
-<li>壓縮檔, 解開會是 dir</li>
-<li>/myapp 裡有 AndroManifest.xml, 裡面寫有 app 相關的設定
-
-<ul>
-<li>package &ndash;> unique name</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>genymotion
-
-<ul>
-<li>android 模擬器</li>
-<li>x86 架構, 在 mac 上面跑快很多 orz</li>
+<li>Expression to evaluate, if true, set class to &ldquo;active&rdquo;, otherwise nothing.</li>
+<li><code>&lt;li ng-class="{ active:tab === 1}"&gt;</code></li>
 </ul>
 </li>
 </ul>
@@ -303,12 +233,12 @@ Auto format: command + shift + f</p>
   
 
 
-<time datetime="2014-07-03T01:45:04+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2014</time>
+<time datetime="2014-07-09T18:31:33+08:00" pubdate data-updated="true">Jul 9<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/android/'>Android</a>
+    <a class='category' href='/blog/categories/angularjs/'>AngularJs</a>
   
 </span>
 
@@ -317,7 +247,7 @@ Auto format: command + shift + f</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://roylo.github.io/blog/2014/07/03/android-learning-0/" data-via="joeblack1986@gmail.com" data-counturl="http://roylo.github.io/blog/2014/07/03/android-learning-0/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://roylo.github.io/blog/2014/07/09/angularjs-learning-note-2/" data-via="joeblack1986@gmail.com" data-counturl="http://roylo.github.io/blog/2014/07/09/angularjs-learning-note-2/" >Tweet</a>
   
   
   
@@ -328,10 +258,8 @@ Auto format: command + shift + f</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/07/02/android-learning-1/" title="Previous Post: Android learning-1">&laquo; Android learning-1</a>
+        <a class="basic-alignment left" href="/blog/2014/07/07/angularjs-learning-note-1/" title="Previous Post: AngularJs Learning Note-1">&laquo; AngularJs Learning Note-1</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/07/03/octopress-themes/" title="Next Post: octopress themes">octopress themes &raquo;</a>
       
     </p>
   </footer>
@@ -435,8 +363,8 @@ Auto format: command + shift + f</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://roylo.github.io/blog/2014/07/03/android-learning-0/';
-        var disqus_url = 'http://roylo.github.io/blog/2014/07/03/android-learning-0/';
+        var disqus_identifier = 'http://roylo.github.io/blog/2014/07/09/angularjs-learning-note-2/';
+        var disqus_url = 'http://roylo.github.io/blog/2014/07/09/angularjs-learning-note-2/';
         var disqus_script = 'embed.js';
       
     (function () {
