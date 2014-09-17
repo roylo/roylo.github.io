@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://roylo.github.io/atom.xml" rel="self"/>
+  <link href="http://roylo.github.io/"/>
+  <updated>2014-09-17T09:43:49+08:00</updated>
+  <id>http://roylo.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[在新機器上重新產生 Octopress Blog]]></title>
+    <link href="http://roylo.github.io/blog/2014/09/17/zai-xin-ji-qi-shang-zhong-xin-chan-sheng-octopress-blog/"/>
+    <updated>2014-09-17T09:38:34+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/09/17/zai-xin-ji-qi-shang-zhong-xin-chan-sheng-octopress-blog</id>
+    <content type="html"><![CDATA[<p>test</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ack - Better Grep!]]></title>
+    <link href="http://roylo.github.io/blog/2014/07/03/ack-better-grep/"/>
+    <updated>2014-07-03T22:51:36+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/07/03/ack-better-grep</id>
+    <content type="html"><![CDATA[<p>Ack &ndash; 專門給 programmer 用的 grep !<br/>
+晚上隨便看看網頁吸收新知, 看到了這個 <a href="http://beyondgrep.com/">ack</a> 感覺對工作上會很有幫助啊!!<br/>
+稍微試了一下, 感覺的確是滿不錯的, 取代 grep 的功能 ^o^</p>
+
+<p>下面就來看看怎麼使用 ack 吧~</p>
+
+<!-- more -->
+
+
+<h2>安裝 ack</h2>
+
+<p>ack 提供很多種安裝的方式, 各種平台上幾乎都有 pkg<br/>
+以我自己而言, mac 上可以直接用 homebrew 安裝<br/>
+其他平台可以參考<a href="http://beyondgrep.com/install/">這裡</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>brew install ack
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>另外 ack 也提供直接 curl 下載執行檔便於攜帶, 只要執行下面的指令 <br />
+ack 就會放到 ~/bin/ack 囉~</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>curl http://beyondgrep.com/ack-2.12-single-file &gt; ~/bin/ack <span class="o">&amp;&amp;</span> chmod 0755 !#:3
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Why ack?</h2>
+
+<p>ack 看起來有幾個不錯的效果, 截取一些對我有吸引力的部分</p>
+
+<ul>
+<li>快! (最重要的事情</li>
+<li>自動省略一些像是 version control 的dir(還有一些其他的), 像 grep 每次搜尋 .svn 都讓我惱火</li>
+<li>portable, ack 是純 perl, 只需要 perl5 就可以執行</li>
+<li>可以指定搜尋的 file type 還滿方便</li>
+<li>可以拿來找某個 type 的 file list</li>
+<li>ack 三個字比 grep 四個字少打一個字XDDD, 官網的這項優點讓我笑了</li>
+</ul>
+
+
+<h2>ack 簡易教學</h2>
+
+<p>功能太多, 列一些看到不錯的 <br />
+詳細可以參考 <a href="http://beyondgrep.com/documentation/ack-2.12-man.html">ack manual</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># ack ignore CVS, .svn, .git, and other ignored directories</span>
+</span><span class='line'>ack <span class="s1">&#39;search string&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 只搜尋某種 file type, ack --type string</span>
+</span><span class='line'>ack --php <span class="nb">test</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># 列出將會搜尋的 filename, 但不真的 search</span>
+</span><span class='line'>ack -f
+</span><span class='line'><span class="c"># 搭配一下 --type 就可以拿來搜尋 filename, 或是做一些其他事情</span>
+</span><span class='line'><span class="c"># remove all files of type html</span>
+</span><span class='line'>ack -f --html --print0 | xargs -0 rm -f
+</span><span class='line'>
+</span><span class='line'><span class="c"># 搜尋所有的檔案不要忽略</span>
+</span><span class='line'>ack -a <span class="nb">test</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Compare to GNU global</h2>
+
+<p>跟 global 相比, 我覺得用處上還是有些區別<br/>
+global 基本上是要建 index file<br/>
+這對 code base 很大的時候是相當有用的, 加快搜尋的速度<br/>
+但缺點也是因為他要建 index file, 有時候並不方便 (畢竟我不會到處去建 index)</p>
+
+<p>ack 對比之下更接近 grep 的用法, 可以隨時 search 會方便的多<br/>
+尤其在公司的 server 上不可能用 global, 這時候就是 ack 發揮效用的時候了!!</p>
+
+<h2>ack for VIM!</h2>
+
+<p>最後就是 ack 還有做 vim 的 plugin<br/>
+可以參考一下 <a href="http://www.vim.org/scripts/script.php?script_id=2572">ack for vim</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Themes]]></title>
+    <link href="http://roylo.github.io/blog/2014/07/03/octopress-themes/"/>
+    <updated>2014-07-03T08:06:48+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/07/03/octopress-themes</id>
+    <content type="html"><![CDATA[<p>想幫 octopress 換個皮, 至少跟 default 不一樣XD</p>
+
+<p><a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a> <br />
+這邊搜集了不少第三方 themes <br />
+就隨便玩玩啦~ <br /></p>
+
+<p>裝的方法也很簡單</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd </span>octopress
+</span><span class='line'>git clone GIT_URL .themes/THEME_NAME
+</span><span class='line'>rake install<span class="o">[</span><span class="s1">&#39;THEME_NAME&#39;</span><span class="o">]</span>
+</span><span class='line'>rake generate
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>有興趣也可以換換主題給自己不一樣的心情囉~ <br />
+ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android Learning-0]]></title>
+    <link href="http://roylo.github.io/blog/2014/07/03/android-learning-0/"/>
+    <updated>2014-07-03T01:45:04+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/07/03/android-learning-0</id>
+    <content type="html"><![CDATA[<p>android training 速寫筆記 &ndash; 0</p>
+
+<!-- more -->
+
+
+<h2>相關知識</h2>
+
+<h3>Android 四大元件</h3>
+
+<ul>
+<li>透過 Intent 去操作各個元件</li>
+<li>Acitvity
+
+<ul>
+<li>控制 UI</li>
+<li>控制程式狀態 (active)</li>
+<li>Fragment (替換螢幕上的 component)</li>
+</ul>
+</li>
+<li>Service
+
+<ul>
+<li>Start/Stop</li>
+<li>onBind</li>
+<li>不會因為退到背景或是關上螢幕而暫停</li>
+</ul>
+</li>
+<li>Broadcast Receiver
+
+<ul>
+<li>GCM (google cloud message)</li>
+<li>APN, WPN</li>
+</ul>
+</li>
+<li>Content Provider
+
+<ul>
+<li>提供 App 之間資源交換</li>
+<li>Intent 不會直接來驅動</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Eclipse notation</h3>
+
+<ul>
+<li>綠C => class</li>
+<li>紫I => interface</li>
+<li>A => abstract</li>
+<li>F => Final</li>
+<li>S => Static</li>
+<li>member function => method (實心)</li>
+<li>member variable => field (空心)</li>
+<li>實心三角形 Override (parant class)</li>
+<li>空心三角形 Override (interface method)</li>
+</ul>
+
+
+<h3>developement env setup</h3>
+
+<ul>
+<li>下載 android ADT from <a href="http://developer.android.com/sdk/index.html">ADT download</a></li>
+<li>解壓縮, 開啟資料夾內的 Eclipse</li>
+<li>點選右上角的 open perspective, 開啓 Java</li>
+<li>開啓左上角的 Android SDK manager 下載需要的 SDK tools</li>
+</ul>
+
+
+<h3>資料夾相關</h3>
+
+<ul>
+<li>in ~/adt/sdk/
+
+<ul>
+<li>tools &ndash;> 版本無關 (sqlite3</li>
+<li>platform-tools &ndash;> 版本相關 (adb</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>new project</h3>
+
+<ul>
+<li>Min SDK: Device 最早版本
+
+<ul>
+<li>in AndroManifest.xml</li>
+</ul>
+</li>
+<li>Target SDK: Device 預期版本
+
+<ul>
+<li>in AndroManifest.xml</li>
+</ul>
+</li>
+<li>compile with: SDK binary
+
+<ul>
+<li>with Eclipse 專案 (選用穩定的 release</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Hello World</h3>
+
+<ol>
+<li>layout (XML) => hello World</li>
+<li>Main Activity extends Activity</li>
+<li>Activity load layout</li>
+<li>add to AndroManifest.xml</li>
+</ol>
+
+
+<h3>ADB</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'> <span class="c"># 查看 adb 有哪些 devices</span>
+</span><span class='line'> adb devices
+</span><span class='line'>
+</span><span class='line'> <span class="c"># 移除 app (ex. com.mycompany.myapp</span>
+</span><span class='line'> adb uninstall &lt;pkg name&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>eclipse</h3>
+
+<h4>常用快捷鍵</h4>
+
+<p>organize input: command + shift + o
+Line Comments: command + /
+Line Move: 選取block , alt + up/ alt + down
+Auto format: command + shift + f</p>
+
+<h4>小技巧</h4>
+
+<ul>
+<li>type hierarchy
+
+<ul>
+<li>可以看到 class 的 hierarchy</li>
+</ul>
+</li>
+<li>auto complete &ndash;> content assist</li>
+<li>按住 command + 左鍵點 class name &ndash;> 打開對應的 class src code</li>
+</ul>
+
+
+<h3>Other knowledge</h3>
+
+<ul>
+<li><p>CPU</p>
+
+<ul>
+<li>A (application)</li>
+<li>B (binary)</li>
+<li>I (interface)
+通常會有 armv7a, intel.x86, (mips from 大陸)</li>
+</ul>
+</li>
+<li><p>ADT: Android developement Tool</p></li>
+<li>ADB: Android Debug Briedge</li>
+<li><p>AVD: Android Virtual Device</p></li>
+<li><p>每一個 app 都是 apk 檔</p>
+
+<ul>
+<li>壓縮檔, 解開會是 dir</li>
+<li>/myapp 裡有 AndroManifest.xml, 裡面寫有 app 相關的設定
+
+<ul>
+<li>package &ndash;> unique name</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>genymotion
+
+<ul>
+<li>android 模擬器</li>
+<li>x86 架構, 在 mac 上面跑快很多 orz</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android Learning-1]]></title>
+    <link href="http://roylo.github.io/blog/2014/07/02/android-learning-1/"/>
+    <updated>2014-07-02T15:28:58+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/07/02/android-learning-1</id>
+    <content type="html"><![CDATA[<p>android training 速寫筆記 &ndash; 1</p>
+
+<!-- more -->
+
+
+<h2>Android 相關</h2>
+
+<ul>
+<li>acore: android core</li>
+<li>onXXXX function 都是 callback function, 僅會由 android 來呼叫</li>
+<li>ViewGroup class
+
+<ul>
+<li>處理 layout</li>
+<li>使用相對的方式去做大小設定</li>
+</ul>
+</li>
+<li>透過 xml 的描述定義螢幕顯示</li>
+</ul>
+
+
+<h2>使用者介面實作</h2>
+
+<ul>
+<li><p>xxx.xml</p>
+
+<ul>
+<li>lowercase</li>
+<li>no special character</li>
+<li>number cna&rsquo;t be leading</li>
+</ul>
+</li>
+<li><p>layout 大小</p>
+
+<ul>
+<li>match parent (大)
+
+<ul>
+<li>填滿 parent</li>
+</ul>
+</li>
+<li>wrap content (小)
+
+<ul>
+<li>只要大小可以把內容包起來就好</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git 基本指令]]></title>
+    <link href="http://roylo.github.io/blog/2014/06/30/git-ji-ben-zhi-ling/"/>
+    <updated>2014-06-30T14:47:41+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/06/30/git-ji-ben-zhi-ling</id>
+    <content type="html"><![CDATA[<p>記錄一下工作上用到的 git 指令, 免得老是在查 Orz</p>
+
+<!-- more -->
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'> <span class="c"># local 切出一個 branch</span>
+</span><span class='line'> git checkout &lt;branch_name&gt;
+</span><span class='line'>
+</span><span class='line'> <span class="c"># delete local 的 branch</span>
+</span><span class='line'> git branch delete -d &lt;branch_name&gt;
+</span><span class='line'>
+</span><span class='line'> <span class="c"># delete remote 的 branch</span>
+</span><span class='line'> git push origin --delete &lt;branch_name&gt;
+</span><span class='line'>
+</span><span class='line'> <span class="c"># 在 local 建立一個新的 branch</span>
+</span><span class='line'> git checkoutout -b &lt;branch_name&gt;
+</span><span class='line'>
+</span><span class='line'> <span class="c"># push local branch 到 remote server</span>
+</span><span class='line'> git push origin &lt;branch_name&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>如何 checkout remote branch 回 local 端?</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'> <span class="c"># after git version 1.6.6, 可以直接下</span>
+</span><span class='line'> git fetch
+</span><span class='line'> git checkout &lt;branch_name&gt;
+</span><span class='line'>
+</span><span class='line'> <span class="c"># ==========================================</span>
+</span><span class='line'>
+</span><span class='line'> <span class="c"># old git version</span>
+</span><span class='line'> git fetch origin
+</span><span class='line'> <span class="c"># 查詢哪些 branch 可以 checkout</span>
+</span><span class='line'> git branch -v -a
+</span><span class='line'> <span class="c"># checkout 回 local 端</span>
+</span><span class='line'> git checkout -b &lt;branch_name&gt; origin/&lt;branch_name&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress 新手教學]]></title>
+    <link href="http://roylo.github.io/blog/2014/06/29/octopress-xin-shou-jiao-xue/"/>
+    <updated>2014-06-29T16:23:38+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/06/29/octopress-xin-shou-jiao-xue</id>
+    <content type="html"><![CDATA[<p>會寫這篇純粹是給健忘的自己怎麼使用 Octopress, 至少把一些基礎寫出來免得老是忘記重看<br/>
+首先從如何設定 Octopress 開始, 可以參考他們的<a href="http://octopress.org/">官網</a><br/>
+讓可愛的小章魚教導你XD</p>
+
+<!-- more -->
+
+
+<h2>1. Octopress Setup PreStage</h2>
+
+<blockquote><p>首先安裝 <a href="http://git-scm.com/">git</a></p>
+
+<p>安裝 Ruby 1.9.3 以上版本, 官網建議可以用 <a href="http://octopress.org/docs/setup/rbenv">rebnv</a> 或是 <a href="http://octopress.org/docs/setup/rvm">RVM</a></p></blockquote>
+
+<p>印象中我在裝 Ruby 的時候遇到了一點麻煩, mac 本身也有內建 Ruby. 詳細怎麼解決我已經忘記了XD <br/>
+反正要確保你有裝到 Ruby 就是了(挖鼻孔, 但是不用裝到 RoR</p>
+
+<h2>2. Octopress Setup</h2>
+
+<p>從 git 上把 octopress 抓下來</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">git</span> <span class="nb">clone</span> <span class="ss">git</span><span class="p">:</span><span class="sr">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">imathis</span><span class="o">/</span><span class="n">octopress</span><span class="o">.</span><span class="n">git</span> <span class="n">octopress</span>
+</span><span class='line'><span class="n">cd</span> <span class="n">octopress</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安裝一些 dependencies, 其實我還不太懂這些&hellip;很懶得研究</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="n">install</span> <span class="n">bundler</span>
+</span><span class='line'><span class="n">rbenv</span> <span class="n">rehash</span> <span class="c1"># If you use rbenv, rehash to be able to run the bundle command</span>
+</span><span class='line'><span class="n">bundle</span> <span class="n">install</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安裝 default 的 Octopress theme</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">install</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>3. 設定 Octopress Deploy</h2>
+
+<p>Octopress 的好處是他是純靜態的網頁, 所以我們可以輕易的將文章 Deploy 到別的機器<br/>
+它可以是 Github page, 也可以是你自己 own 的 Web Server<br/></p>
+
+<p>官網上介紹了三種 Deploy 的方法：</p>
+
+<ol>
+<li><a href="http://octopress.org/docs/deploying/github">Github page</a></li>
+<li><a href="http://octopress.org/docs/deploying/heroku">Heroku</a></li>
+<li><a href="http://octopress.org/docs/deploying/Rsync">Rsync</a></li>
+</ol>
+
+
+<p>後來自己選了 Github page, 滿容易設定也滿方便的! <br/>
+畢竟身為一個偽 Nerd, 有個 Github 是基本</p>
+
+<h2>4. 設定 Octopress config</h2>
+
+<p>Octopress 本身的設定透過 Yml 檔來 config, 提供了相當多的參數可以調整<br/>
+但是基於本人懶惰的個性, 只有稍微看了一下, 沒有多調, 等到以後有需要再說吧XD <br/>
+設定的說明可以參考 <a href="http://octopress.org/docs/configuring/">這裡</a></p>
+
+<h2>5. 開始 Blog!!</h2>
+
+<p>其實我寫這篇的目的純粹是為了記錄寫 blog 的指令 = =a <br/>
+但是我龜毛的個性促使我寫稍微完整一點 <br/></p>
+
+<p>blogging 相關的指令都靠 rake 來做, Octopress 已經將複雜的指令簡化 <br/>
+所以記得下面這些就可以囉~</p>
+
+<p>而 Octopress 可以使用 markdown 的語法來寫 blog <br/>
+Markdown 的語法可以參考 <a href="http://markdown.tw/">markdown 語法</a></p>
+
+<h3>New post</h3>
+
+<p>透過 rake_post 指令, Octopress 會自動產生好一個 markdown, 並且放在 _posts/ 資料夾下 <br/>
+預設的 naming 會是 Y-m-d-title.markdown 的格式, 滿清楚的, 而且支援中文喔!!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">new_post</span><span class="o">[</span><span class="s2">&quot;Zombie Ninjas Attack: A survivor&#39;s retrospective&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># Creates source/_posts/2011-07-03-zombie-ninjas-attack-a-survivors-retrospective.markdown</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>而這個檔名也會決定你網站的 Url, 譬如說上面這個 example 的路徑就會是</p>
+
+<blockquote><p><a href="http://site.com/blog/2011/07/03/zombie-ninjas-attack-a-survivors-retrospective/index.html">http://site.com/blog/2011/07/03/zombie-ninjas-attack-a-survivors-retrospective/index.html</a></p></blockquote>
+
+<h3>New page</h3>
+
+<p>除了常用到的 blog uri 之外, 你也可以自己建立 page</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">new_page</span><span class="o">[</span><span class="k">super</span><span class="o">-</span><span class="n">awesome</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># creates /source/super-awesome/index.markdown</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">new_page</span><span class="o">[</span><span class="k">super</span><span class="o">-</span><span class="n">awesome</span><span class="o">/</span><span class="n">page</span><span class="o">.</span><span class="n">html</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># creates /source/super-awesome/page.html </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>markdown 名稱若是 <code>abc.markdown</code>, Octopress 會 parse 建立成 <code>site.com/abc.html</code><br/>
+如果希望建立成 <code>site.com/abc/</code>, 就要把檔案弄成 <code>abc/index.markdown</code></p>
+
+<h3>常用語法</h3>
+
+<p><code>&lt;!-- more --&gt;</code>
+可以在 content 裡面寫這個, 這樣在此行之下的內容就不會顯示在首頁</p>
+
+<p><code>rake generate</code>
+將 <code>_posts/</code> 下面的 markdown parse 並放入<code>_public</code> 的資料夾內</p>
+
+<p><code>rake preview</code>
+會在 local 端起一個 Server, 預覽文章</p>
+
+<p><code>rake watch</code>
+可以監測 <code>source/</code> 和 <code>sass/</code> 資料夾下是否已異動, 有的話就做 regenerate</p>
+
+<p><code>rake deploy</code>
+可以發佈到設定好的遠端 server 上</p>
+
+<h3>Code Style</h3>
+
+<p>Octopress 最有特色的點就是易於 sharing code fragment, 而他也提供了非常多 syntax 的顯示方式 <br/>
+詳細可以參考 <a href="http://octopress.org/docs/blogging/code/">Octopress code syntax</a></p>
+
+<h2>7. 結語</h2>
+
+<p>這第一篇文章只粗淺的介紹了 Octopress, 其實 Octopress 的功能是非常強大的<br/>
+等以後有用到的話再來介紹吧~ <br/></p>
+
+<p>作為第一篇讓我練習寫的 blog 文章, 應該夠了 (其實是煩了XD</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | My Octopress Blog]]></title>
+  <link href="http://roylo.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://roylo.github.io/"/>
+  <updated>2014-09-17T09:43:49+08:00</updated>
+  <id>http://roylo.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Themes]]></title>
+    <link href="http://roylo.github.io/blog/2014/07/03/octopress-themes/"/>
+    <updated>2014-07-03T08:06:48+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/07/03/octopress-themes</id>
+    <content type="html"><![CDATA[<p>想幫 octopress 換個皮, 至少跟 default 不一樣XD</p>
+
+<p><a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a> <br />
+這邊搜集了不少第三方 themes <br />
+就隨便玩玩啦~ <br /></p>
+
+<p>裝的方法也很簡單
+<code>sh
+cd octopress
+git clone GIT_URL .themes/THEME_NAME
+rake install['THEME_NAME']
+rake generate
+</code></p>
+
+<p>有興趣也可以換換主題給自己不一樣的心情囉~ <br />
+ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
+]]></content>
+  </entry>
+  
+</feed>
