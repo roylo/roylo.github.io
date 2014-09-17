@@ -1,78 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-<<<<<<< HEAD
   <title><![CDATA[Category: Android | My Octopress Blog]]></title>
   <link href="http://roylo.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-09-17T09:43:49+08:00</updated>
+  <updated>2014-09-17T09:46:57+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
-=======
-  <title><![CDATA[Category: Android | Freaking RoyLo]]></title>
-  <link href="http://roylo.github.io/blog/categories/android/atom.xml" rel="self"/>
-  <link href="http://roylo.github.io/"/>
-  <updated>2014-07-11T08:24:36+08:00</updated>
-  <id>http://roylo.github.io/</id>
-  <author>
-    <name><![CDATA[RoyLo]]></name>
->>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-<<<<<<< HEAD
-=======
-    <title type="html"><![CDATA[Android 測試]]></title>
-    <link href="http://roylo.github.io/blog/2014/07/04/android-ce-shi/"/>
-    <updated>2014-07-04T18:15:13+08:00</updated>
-    <id>http://roylo.github.io/blog/2014/07/04/android-ce-shi</id>
-    <content type="html"><![CDATA[<ul>
-<li>實機投影
-
-<ul>
-<li><a href="http://tekibrain.blogspot.tw/2010/09/android.html">blog</a></li>
-<li>asm.jar</li>
-</ul>
-</li>
-<li>黑盒測試
-
-<ul>
-<li>壓力測試</li>
-</ul>
-</li>
-<li>灰盒測試
-
-<ul>
-<li>monkeyrunner</li>
-<li>情境測試</li>
-</ul>
-</li>
-<li>白盒測試
-
-<ul>
-<li>unit test</li>
-<li>activitity unit test</li>
-<li><a href="http://developer.android.com/reference/android/test/ActivityInstrumentationTestCase2.html">document</a></li>
-</ul>
-</li>
-<li>Google web driver
-
-<ul>
-<li>針對 WebApp 做測試</li>
-<li>not for native app</li>
-</ul>
-</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
->>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
     <title type="html"><![CDATA[Android Learning-0]]></title>
     <link href="http://roylo.github.io/blog/2014/07/03/android-learning-0/"/>
     <updated>2014-07-03T01:45:04+08:00</updated>
