@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Git | Freaking RoyLo]]></title>
+  <link href="http://roylo.github.io/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://roylo.github.io/"/>
+  <updated>2014-07-11T08:24:36+08:00</updated>
+  <id>http://roylo.github.io/</id>
+  <author>
+    <name><![CDATA[RoyLo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Git 基本指令]]></title>
+    <link href="http://roylo.github.io/blog/2014/06/30/git-ji-ben-zhi-ling/"/>
+    <updated>2014-06-30T14:47:41+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/06/30/git-ji-ben-zhi-ling</id>
+    <content type="html"><![CDATA[<p>記錄一下工作上用到的 git 指令, 免得老是在查 Orz</p>
+
+<!-- more -->
+
+
+<p>``` sh
+ # local 切出一個 branch
+ git checkout &lt;branch_name></p>
+
+<p> # delete local 的 branch
+ git branch delete -d &lt;branch_name></p>
+
+<p> # delete remote 的 branch
+ git push origin &mdash;delete &lt;branch_name></p>
+
+<p> # 在 local 建立一個新的 branch
+ git checkoutout -b &lt;branch_name></p>
+
+<p> # push local branch 到 remote server
+ git push origin &lt;branch_name>
+```</p>
+
+<ul>
+<li>如何 checkout remote branch 回 local 端?
+``` sh
+
+<h1>after git version 1.6.6, 可以直接下</h1>
+
+<p>git fetch
+git checkout &lt;branch_name></p></li>
+</ul>
+
+
+<p> # ==========================================</p>
+
+<p> # old git version
+ git fetch origin
+ # 查詢哪些 branch 可以 checkout
+ git branch -v -a
+ # checkout 回 local 端
+ git checkout -b &lt;branch_name> origin/&lt;branch_name>
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Unix | Freaking RoyLo]]></title>
+  <link href="http://roylo.github.io/blog/categories/unix/atom.xml" rel="self"/>
+  <link href="http://roylo.github.io/"/>
+  <updated>2014-07-11T08:24:36+08:00</updated>
+  <id>http://roylo.github.io/</id>
+  <author>
+    <name><![CDATA[RoyLo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ack - Better Grep!]]></title>
+    <link href="http://roylo.github.io/blog/2014/07/03/ack-better-grep/"/>
+    <updated>2014-07-03T22:51:36+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/07/03/ack-better-grep</id>
+    <content type="html"><![CDATA[<p>Ack &ndash; 專門給 programmer 用的 grep !<br/>
+晚上隨便看看網頁吸收新知, 看到了這個 <a href="http://beyondgrep.com/">ack</a> 感覺對工作上會很有幫助啊!!<br/>
+稍微試了一下, 感覺的確是滿不錯的, 取代 grep 的功能 ^o^</p>
+
+<p>下面就來看看怎麼使用 ack 吧~</p>
+
+<!-- more -->
+
+
+<h2>安裝 ack</h2>
+
+<p>ack 提供很多種安裝的方式, 各種平台上幾乎都有 pkg<br/>
+以我自己而言, mac 上可以直接用 homebrew 安裝<br/>
+其他平台可以參考<a href="http://beyondgrep.com/install/">這裡</a>
+<code>sh
+brew install ack
+</code></p>
+
+<p>另外 ack 也提供直接 curl 下載執行檔便於攜帶, 只要執行下面的指令 <br />
+ack 就會放到 ~/bin/ack 囉~
+<code>sh
+curl http://beyondgrep.com/ack-2.12-single-file &gt; ~/bin/ack &amp;&amp; chmod 0755 !#:3
+</code></p>
+
+<h2>Why ack?</h2>
+
+<p>ack 看起來有幾個不錯的效果, 截取一些對我有吸引力的部分</p>
+
+<ul>
+<li>快! (最重要的事情</li>
+<li>自動省略一些像是 version control 的dir(還有一些其他的), 像 grep 每次搜尋 .svn 都讓我惱火</li>
+<li>portable, ack 是純 perl, 只需要 perl5 就可以執行</li>
+<li>可以指定搜尋的 file type 還滿方便</li>
+<li>可以拿來找某個 type 的 file list</li>
+<li>ack 三個字比 grep 四個字少打一個字XDDD, 官網的這項優點讓我笑了</li>
+</ul>
+
+
+<h2>ack 簡易教學</h2>
+
+<p>功能太多, 列一些看到不錯的 <br />
+詳細可以參考 <a href="http://beyondgrep.com/documentation/ack-2.12-man.html">ack manual</a>
+``` sh</p>
+
+<h1>ack ignore CVS, .svn, .git, and other ignored directories</h1>
+
+<p>ack &lsquo;search string&rsquo;</p>
+
+<h1>只搜尋某種 file type, ack &mdash;type string</h1>
+
+<p>ack &mdash;php test</p>
+
+<h1>列出將會搜尋的 filename, 但不真的 search</h1>
+
+<p>ack -f</p>
+
+<h1>搭配一下 &mdash;type 就可以拿來搜尋 filename, 或是做一些其他事情</h1>
+
+<h1>remove all files of type html</h1>
+
+<p>ack -f &mdash;html &mdash;print0 | xargs -0 rm -f</p>
+
+<h1>搜尋所有的檔案不要忽略</h1>
+
+<p>ack -a test
+```</p>
+
+<h2>Compare to GNU global</h2>
+
+<p>跟 global 相比, 我覺得用處上還是有些區別<br/>
+global 基本上是要建 index file<br/>
+這對 code base 很大的時候是相當有用的, 加快搜尋的速度<br/>
+但缺點也是因為他要建 index file, 有時候並不方便 (畢竟我不會到處去建 index)</p>
+
+<p>ack 對比之下更接近 grep 的用法, 可以隨時 search 會方便的多<br/>
+尤其在公司的 server 上不可能用 global, 這時候就是 ack 發揮效用的時候了!!</p>
+
+<h2>ack for VIM!</h2>
+
+<p>最後就是 ack 還有做 vim 的 plugin<br/>
+可以參考一下 <a href="http://www.vim.org/scripts/script.php?script_id=2572">ack for vim</a></p>
+]]></content>
+  </entry>
+  
+</feed>

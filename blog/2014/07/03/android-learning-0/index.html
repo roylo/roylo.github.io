@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Android Learning-0 - Freaking RoyLo</title>
+  <meta name="author" content="RoyLo">
+
+  
+  <meta name="description" content="android training 速寫筆記 &ndash; 0 相關知識 Android 四大元件 透過 Intent 去操作各個元件
+Acitvity 控制 UI
+控制程式狀態 (active)
+Fragment (替換螢幕上的 component) Service Start/Stop &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roylo.github.io/blog/2014/07/03/android-learning-0">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Freaking RoyLo" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Freaking RoyLo</a></h1>
+  
+    <h2>Hang in there, buddy!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/articles">Articles</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Android Learning-0</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-03T01:45:04+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://roylo.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>android training 速寫筆記 &ndash; 0</p>
+
+<!-- more -->
+
+
+<h2>相關知識</h2>
+
+<h3>Android 四大元件</h3>
+
+<ul>
+<li>透過 Intent 去操作各個元件</li>
+<li>Acitvity
+
+<ul>
+<li>控制 UI</li>
+<li>控制程式狀態 (active)</li>
+<li>Fragment (替換螢幕上的 component)</li>
+</ul>
+</li>
+<li>Service
+
+<ul>
+<li>Start/Stop</li>
+<li>onBind</li>
+<li>不會因為退到背景或是關上螢幕而暫停</li>
+</ul>
+</li>
+<li>Broadcast Receiver
+
+<ul>
+<li>GCM (google cloud message)</li>
+<li>APN, WPN</li>
+</ul>
+</li>
+<li>Content Provider
+
+<ul>
+<li>提供 App 之間資源交換</li>
+<li>Intent 不會直接來驅動</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Eclipse notation</h3>
+
+<ul>
+<li>綠C => class</li>
+<li>紫I => interface</li>
+<li>A => abstract</li>
+<li>F => Final</li>
+<li>S => Static</li>
+<li>member function => method (實心)</li>
+<li>member variable => field (空心)</li>
+<li>實心三角形 Override (parant class)</li>
+<li>空心三角形 Override (interface method)</li>
+</ul>
+
+
+<h3>developement env setup</h3>
+
+<ul>
+<li>下載 android ADT from <a href="http://developer.android.com/sdk/index.html">ADT download</a></li>
+<li>解壓縮, 開啟資料夾內的 Eclipse</li>
+<li>點選右上角的 open perspective, 開啓 Java</li>
+<li>開啓左上角的 Android SDK manager 下載需要的 SDK tools</li>
+</ul>
+
+
+<h3>資料夾相關</h3>
+
+<ul>
+<li>in ~/adt/sdk/
+
+<ul>
+<li>tools &ndash;> 版本無關 (sqlite3</li>
+<li>platform-tools &ndash;> 版本相關 (adb</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>new project</h3>
+
+<ul>
+<li>Min SDK: Device 最早版本
+
+<ul>
+<li>in AndroManifest.xml</li>
+</ul>
+</li>
+<li>Target SDK: Device 預期版本
+
+<ul>
+<li>in AndroManifest.xml</li>
+</ul>
+</li>
+<li>compile with: SDK binary
+
+<ul>
+<li>with Eclipse 專案 (選用穩定的 release</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Hello World</h3>
+
+<ol>
+<li>layout (XML) => hello World</li>
+<li>Main Activity extends Activity</li>
+<li>Activity load layout</li>
+<li>add to AndroManifest.xml</li>
+</ol>
+
+
+<h3>ADB</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'> <span class="c"># 查看 adb 有哪些 devices</span>
+</span><span class='line'> adb devices
+</span><span class='line'>
+</span><span class='line'> <span class="c"># 移除 app (ex. com.mycompany.myapp</span>
+</span><span class='line'> adb uninstall &lt;pkg name&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>eclipse</h3>
+
+<h4>常用快捷鍵</h4>
+
+<p>organize input: command + shift + o
+Line Comments: command + /
+Line Move: 選取block , alt + up/ alt + down
+Auto format: command + shift + f</p>
+
+<h4>小技巧</h4>
+
+<ul>
+<li>type hierarchy
+
+<ul>
+<li>可以看到 class 的 hierarchy</li>
+</ul>
+</li>
+<li>auto complete &ndash;> content assist</li>
+<li>按住 command + 左鍵點 class name &ndash;> 打開對應的 class src code</li>
+</ul>
+
+
+<h3>Other knowledge</h3>
+
+<ul>
+<li><p>CPU</p>
+
+<ul>
+<li>A (application)</li>
+<li>B (binary)</li>
+<li>I (interface)
+通常會有 armv7a, intel.x86, (mips from 大陸)</li>
+</ul>
+</li>
+<li><p>ADT: Android developement Tool</p></li>
+<li>ADB: Android Debug Briedge</li>
+<li><p>AVD: Android Virtual Device</p></li>
+<li><p>每一個 app 都是 apk 檔</p>
+
+<ul>
+<li>壓縮檔, 解開會是 dir</li>
+<li>/myapp 裡有 AndroManifest.xml, 裡面寫有 app 相關的設定
+
+<ul>
+<li>package &ndash;> unique name</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>genymotion
+
+<ul>
+<li>android 模擬器</li>
+<li>x86 架構, 在 mac 上面跑快很多 orz</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">RoyLo</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-03T01:45:04+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/android/'>Android</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://roylo.github.io/blog/2014/07/03/android-learning-0/" data-via="joeblack1986@gmail.com" data-counturl="http://roylo.github.io/blog/2014/07/03/android-learning-0/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/07/02/android-learning-1/" title="Previous Post: Android learning-1">&laquo; Android learning-1</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/07/03/octopress-themes/" title="Next Post: octopress themes">octopress themes &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roylo.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/09/angularjs-learning-note-2/">AngularJs Learning Note-2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/07/angularjs-learning-note-1/">AngularJs Learning Note-1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/04/android-ce-shi/">Android 測試</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/03/ack-better-grep/">Ack - Better Grep!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/03/octopress-themes/">Octopress Themes</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/roylo">@roylo</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'roylo',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - RoyLo -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'roylo';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roylo.github.io/blog/2014/07/03/android-learning-0/';
+        var disqus_url = 'http://roylo.github.io/blog/2014/07/03/android-learning-0/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>
