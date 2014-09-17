@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
+<<<<<<< HEAD
   <title><![CDATA[Category: Shell | My Octopress Blog]]></title>
   <link href="http://roylo.github.io/blog/categories/shell/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
@@ -8,6 +9,15 @@
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
+=======
+  <title><![CDATA[Category: Shell | Freaking RoyLo]]></title>
+  <link href="http://roylo.github.io/blog/categories/shell/atom.xml" rel="self"/>
+  <link href="http://roylo.github.io/"/>
+  <updated>2014-07-11T08:24:36+08:00</updated>
+  <id>http://roylo.github.io/</id>
+  <author>
+    <name><![CDATA[RoyLo]]></name>
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
+<<<<<<< HEAD
   <title><![CDATA[Category: Octopress | My Octopress Blog]]></title>
   <link href="http://roylo.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
@@ -8,6 +9,15 @@
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
+=======
+  <title><![CDATA[Category: Octopress | Freaking RoyLo]]></title>
+  <link href="http://roylo.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://roylo.github.io/"/>
+  <updated>2014-07-11T08:24:36+08:00</updated>
+  <id>http://roylo.github.io/</id>
+  <author>
+    <name><![CDATA[RoyLo]]></name>
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -37,4 +47,146 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
 ]]></content>
   </entry>
   
+<<<<<<< HEAD
+=======
+  <entry>
+    <title type="html"><![CDATA[Octopress 新手教學]]></title>
+    <link href="http://roylo.github.io/blog/2014/06/29/octopress-xin-shou-jiao-xue/"/>
+    <updated>2014-06-29T16:23:38+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/06/29/octopress-xin-shou-jiao-xue</id>
+    <content type="html"><![CDATA[<p>會寫這篇純粹是給健忘的自己怎麼使用 Octopress, 至少把一些基礎寫出來免得老是忘記重看<br/>
+首先從如何設定 Octopress 開始, 可以參考他們的<a href="http://octopress.org/">官網</a><br/>
+讓可愛的小章魚教導你XD</p>
+
+<!-- more -->
+
+
+<h2>1. Octopress Setup PreStage</h2>
+
+<blockquote><p>首先安裝 <a href="http://git-scm.com/">git</a></p>
+
+<p>安裝 Ruby 1.9.3 以上版本, 官網建議可以用 <a href="http://octopress.org/docs/setup/rbenv">rebnv</a> 或是 <a href="http://octopress.org/docs/setup/rvm">RVM</a></p></blockquote>
+
+<p>印象中我在裝 Ruby 的時候遇到了一點麻煩, mac 本身也有內建 Ruby. 詳細怎麼解決我已經忘記了XD <br/>
+反正要確保你有裝到 Ruby 就是了(挖鼻孔, 但是不用裝到 RoR</p>
+
+<h2>2. Octopress Setup</h2>
+
+<p>從 git 上把 octopress 抓下來
+<code>ruby
+git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+</code></p>
+
+<p>安裝一些 dependencies, 其實我還不太懂這些&hellip;很懶得研究
+<code>
+gem install bundler
+rbenv rehash # If you use rbenv, rehash to be able to run the bundle command
+bundle install
+</code></p>
+
+<p>安裝 default 的 Octopress theme
+<code>
+rake install
+</code></p>
+
+<h2>3. 設定 Octopress Deploy</h2>
+
+<p>Octopress 的好處是他是純靜態的網頁, 所以我們可以輕易的將文章 Deploy 到別的機器<br/>
+它可以是 Github page, 也可以是你自己 own 的 Web Server<br/></p>
+
+<p>官網上介紹了三種 Deploy 的方法：</p>
+
+<ol>
+<li><a href="http://octopress.org/docs/deploying/github">Github page</a></li>
+<li><a href="http://octopress.org/docs/deploying/heroku">Heroku</a></li>
+<li><a href="http://octopress.org/docs/deploying/Rsync">Rsync</a></li>
+</ol>
+
+
+<p>後來自己選了 Github page, 滿容易設定也滿方便的! <br/>
+畢竟身為一個偽 Nerd, 有個 Github 是基本</p>
+
+<h2>4. 設定 Octopress config</h2>
+
+<p>Octopress 本身的設定透過 Yml 檔來 config, 提供了相當多的參數可以調整<br/>
+但是基於本人懶惰的個性, 只有稍微看了一下, 沒有多調, 等到以後有需要再說吧XD <br/>
+設定的說明可以參考 <a href="http://octopress.org/docs/configuring/">這裡</a></p>
+
+<h2>5. 開始 Blog!!</h2>
+
+<p>其實我寫這篇的目的純粹是為了記錄寫 blog 的指令 = =a <br/>
+但是我龜毛的個性促使我寫稍微完整一點 <br/></p>
+
+<p>blogging 相關的指令都靠 rake 來做, Octopress 已經將複雜的指令簡化 <br/>
+所以記得下面這些就可以囉~</p>
+
+<p>而 Octopress 可以使用 markdown 的語法來寫 blog <br/>
+Markdown 的語法可以參考 <a href="http://markdown.tw/">markdown 語法</a></p>
+
+<h3>New post</h3>
+
+<p>透過 rake_post 指令, Octopress 會自動產生好一個 markdown, 並且放在 _posts/ 資料夾下 <br/>
+預設的 naming 會是 Y-m-d-title.markdown 的格式, 滿清楚的, 而且支援中文喔!!</p>
+
+<p>```
+rake new_post[&ldquo;Zombie Ninjas Attack: A survivor&rsquo;s retrospective&rdquo;]</p>
+
+<h1>Creates source/_posts/2011-07-03-zombie-ninjas-attack-a-survivors-retrospective.markdown</h1>
+
+<p>```
+而這個檔名也會決定你網站的 Url, 譬如說上面這個 example 的路徑就會是</p>
+
+<blockquote><p><a href="http://site.com/blog/2011/07/03/zombie-ninjas-attack-a-survivors-retrospective/index.html">http://site.com/blog/2011/07/03/zombie-ninjas-attack-a-survivors-retrospective/index.html</a></p></blockquote>
+
+<h3>New page</h3>
+
+<p>除了常用到的 blog uri 之外, 你也可以自己建立 page</p>
+
+<p>```
+rake new_page[super-awesome]</p>
+
+<h1>creates /source/super-awesome/index.markdown</h1>
+
+<p>rake new_page[super-awesome/page.html]</p>
+
+<h1>creates /source/super-awesome/page.html</h1>
+
+<p>```</p>
+
+<p>markdown 名稱若是 <code>abc.markdown</code>, Octopress 會 parse 建立成 <code>site.com/abc.html</code><br/>
+如果希望建立成 <code>site.com/abc/</code>, 就要把檔案弄成 <code>abc/index.markdown</code></p>
+
+<h3>常用語法</h3>
+
+<p><code>&lt;!-- more --&gt;</code>
+可以在 content 裡面寫這個, 這樣在此行之下的內容就不會顯示在首頁</p>
+
+<p><code>rake generate</code>
+將 <code>_posts/</code> 下面的 markdown parse 並放入<code>_public</code> 的資料夾內</p>
+
+<p><code>rake preview</code>
+會在 local 端起一個 Server, 預覽文章</p>
+
+<p><code>rake watch</code>
+可以監測 <code>source/</code> 和 <code>sass/</code> 資料夾下是否已異動, 有的話就做 regenerate</p>
+
+<p><code>rake deploy</code>
+可以發佈到設定好的遠端 server 上</p>
+
+<h3>Code Style</h3>
+
+<p>Octopress 最有特色的點就是易於 sharing code fragment, 而他也提供了非常多 syntax 的顯示方式 <br/>
+詳細可以參考 <a href="http://octopress.org/docs/blogging/code/">Octopress code syntax</a></p>
+
+<h2>7. 結語</h2>
+
+<p>這第一篇文章只粗淺的介紹了 Octopress, 其實 Octopress 的功能是非常強大的<br/>
+等以後有用到的話再來介紹吧~ <br/></p>
+
+<p>作為第一篇讓我練習寫的 blog 文章, 應該夠了 (其實是煩了XD</p>
+]]></content>
+  </entry>
+  
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
 </feed>

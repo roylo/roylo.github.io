@@ -5,12 +5,21 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
+<<<<<<< HEAD
   <title>My Octopress Blog</title>
   <meta name="author" content="Your Name">
 
   
   <meta name="description" content="test
 ">
+=======
+  <title>Freaking RoyLo</title>
+  <meta name="author" content="RoyLo">
+
+  
+  <meta name="description" content="Filter use pipe &ldquo;|&rdquo; the following example will give price the dolloar sign(localized), Specifies number of decimals 1
+&lt;em class=&quot; &hellip;">
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +31,11 @@
   <link rel="canonical" href="http://roylo.github.io/blog">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+<<<<<<< HEAD
   <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+=======
+  <link href="/atom.xml" rel="alternate" title="Freaking RoyLo" type="application/atom+xml">
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -37,9 +50,15 @@
 
 <body   >
   <header role="banner"><hgroup>
+<<<<<<< HEAD
   <h1><a href="/">My Octopress Blog</a></h1>
   
     <h2>A blogging framework for hackers.</h2>
+=======
+  <h1><a href="/">Freaking RoyLo</a></h1>
+  
+    <h2>Hang in there, buddy!</h2>
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
   
 </hgroup>
 
@@ -52,6 +71,10 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+<<<<<<< HEAD
+=======
+  <li><a href="/articles">Articles</a></li>
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
 </ul>
 
 </nav>
@@ -63,7 +86,11 @@
     <article class="post">
   <header>
     
+<<<<<<< HEAD
       <h1 class="entry-title"><a href="/blog/2014/09/17/zai-xin-ji-qi-shang-zhong-xin-chan-sheng-octopress-blog/">在新機器上重新產生 Octopress Blog</a></h1>
+=======
+      <h1 class="entry-title"><a href="/blog/2014/07/09/angularjs-learning-note-2/">AngularJs Learning Note-2</a></h1>
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
     
     
       <p class="meta">
@@ -79,14 +106,299 @@
   
 
 
+<<<<<<< HEAD
 <time datetime="2014-09-17T09:38:34+08:00" pubdate data-updated="true">Sep 17<span>th</span>, 2014</time>
+=======
+<time datetime="2014-07-09T18:31:33+08:00" pubdate data-updated="true">Jul 9<span>th</span>, 2014</time>
+        
+           | <a href="/blog/2014/07/09/angularjs-learning-note-2/#disqus_thread"
+             data-disqus-identifier="http://roylo.github.io/blog/2014/07/09/angularjs-learning-note-2/">Comments</a>
         
       </p>
     
   </header>
 
 
+  <div class="entry-content"><h2>Filter</h2>
+
+<ul>
+<li>use pipe &ldquo;|&rdquo;
+
+<ul>
+<li>the following example will give price the dolloar sign(localized), Specifies number of decimals</li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;em</span> <span class="na">class=</span><span class="s">&quot;pull-right&quot;</span><span class="nt">&gt;</span>{{product.price | currency}}<span class="nt">&lt;/em&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Formatting with filters
+
+<ul>
+<li>Our Recipe <code>{{ data | filter:options }}</code></li>
+<li>date example
+<code>{{'1388123412323' | date:'MM/dd/yyyy @ h:mma'}}</code> => 12/27/2013 @ 12:50AM</li>
+<li>uppercase &amp; lowercase
+`{{&lsquo;octagon gem&rsquo; | uppercase}} => OCTAGON GEM</li>
+<li>limitTo
+<code>{{'My Description' | limitTo:8}}</code> => My Descr<br/>
+<code>&lt;li ng-repeat="product in store.products | limitTo:3"&gt;</code></li>
+<li>orderBy (descending order)
+<code>&lt;li ng-repeat="product in store.products | orderBy:'-price'"&gt;</code></li>
+</ul>
+</li>
+</ul>
+
+
+<h2>images</h2>
+
+<ul>
+<li>Do not use <code>&lt;img src="{{product.images[0].full}}"/&gt;</code>
+
+<ul>
+<li>the browser tries to load the image before the Expression evaluates</li>
+</ul>
+</li>
+<li>Use <code>&lt;img ng-src="{{product.images[0].full}}"/&gt;</code></li>
+</ul>
+
+
+<h2>tabs</h2>
+
+<ul>
+<li>When ng-click changes the value of tab
+
+<ul>
+<li>the {{tab}} expression auto gets updated.</li>
+</ul>
+</li>
+<li>Expressions define a 2-way Data binding
+
+<ul>
+<li>means Expressions are re-evaluated when a property changes.</li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;section&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-pills&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;a</span> <span class="na">href</span> <span class="na">ng-click=</span><span class="s">&quot;tab = 1&quot;</span><span class="nt">&gt;</span>Description<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;a</span> <span class="na">href</span> <span class="na">ng-click=</span><span class="s">&quot;tab = 2&quot;</span><span class="nt">&gt;</span>aaaa<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;a</span> <span class="na">href</span> <span class="na">ng-click=</span><span class="s">&quot;tab = 3&quot;</span><span class="nt">&gt;</span>bbbb<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>    {{tab}}
+</span><span class='line'><span class="nt">&lt;/section&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel&quot;</span> <span class="na">ng-show=</span><span class="s">&quot;tab === 1&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    xxxxx1
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel&quot;</span> <span class="na">ng-show=</span><span class="s">&quot;tab === 2&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    xxxxx2
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel&quot;</span> <span class="na">ng-show=</span><span class="s">&quot;tab === 3&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    xxxxx3
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>How to set initial value of tab?</p>
+
+<ul>
+<li><code>&lt;section ng-init="tab = "&gt;</code></li>
+</ul>
+</li>
+<li><p>ng-class directive</p>
+
+<ul>
+<li>Expression to evaluate, if true, set class to &ldquo;active&rdquo;, otherwise nothing.</li>
+<li><code>&lt;li ng-class="{ active:tab === 1}"&gt;</code></li>
+</ul>
+</li>
+</ul>
+
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/07/angularjs-learning-note-1/">AngularJs Learning Note-1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-07T22:22:54+08:00" pubdate data-updated="true">Jul 7<span>th</span>, 2014</time>
+        
+           | <a href="/blog/2014/07/07/angularjs-learning-note-1/#disqus_thread"
+             data-disqus-identifier="http://roylo.github.io/blog/2014/07/07/angularjs-learning-note-1/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>這是 code school AngularJs 的一些個人筆記, 希望我可以好好學習！</p>
+
+<h2>Things covered in Note-1</h2>
+
+<ul>
+<li>ENV setup</li>
+<li>Directives &ndash; HTML annotations that trigger javascript behaviors</li>
+<li>Modules &ndash; Where our application components live</li>
+<li>Controllers &ndash; Where we add application behavior</li>
+<li>Expressions &ndash; How values get displayed whthin the page</li>
+</ul>
+
+
+<h2>Prepare env</h2>
+
+<ul>
+<li>Download <a href="http://angularjs.org/">AngularJs</a>
+
+<ul>
+<li>need angular.min.js</li>
+</ul>
+</li>
+<li>Download <a href="http://getbootstrap.com/">Twitter Bootstrap</a>
+
+<ul>
+<li>need Bootstrap.min.css</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Modules</h2>
+
+<ul>
+<li>write pieces of angular application.</li>
+<li>define dependencies for our app.</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/07/07/angularjs-learning-note-1/">Read on &rarr;</a>
+    </footer>
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/04/android-ce-shi/">Android 測試</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-04T18:15:13+08:00" pubdate data-updated="true">Jul 4<span>th</span>, 2014</time>
+        
+           | <a href="/blog/2014/07/04/android-ce-shi/#disqus_thread"
+             data-disqus-identifier="http://roylo.github.io/blog/2014/07/04/android-ce-shi/">Comments</a>
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
+        
+      </p>
+    
+  </header>
+
+
+<<<<<<< HEAD
   <div class="entry-content"><p>test</p>
+=======
+  <div class="entry-content"><ul>
+<li>實機投影
+
+<ul>
+<li><a href="http://tekibrain.blogspot.tw/2010/09/android.html">blog</a></li>
+<li>asm.jar</li>
+</ul>
+</li>
+<li>黑盒測試
+
+<ul>
+<li>壓力測試</li>
+</ul>
+</li>
+<li>灰盒測試
+
+<ul>
+<li>monkeyrunner</li>
+<li>情境測試</li>
+</ul>
+</li>
+<li>白盒測試
+
+<ul>
+<li>unit test</li>
+<li>activitity unit test</li>
+<li><a href="http://developer.android.com/reference/android/test/ActivityInstrumentationTestCase2.html">document</a></li>
+</ul>
+</li>
+<li>Google web driver
+
+<ul>
+<li>針對 WebApp 做測試</li>
+<li>not for native app</li>
+</ul>
+</li>
+</ul>
+
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
 </div>
   
   
@@ -115,6 +427,12 @@
 
 <time datetime="2014-07-03T22:51:36+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2014</time>
         
+<<<<<<< HEAD
+=======
+           | <a href="/blog/2014/07/03/ack-better-grep/#disqus_thread"
+             data-disqus-identifier="http://roylo.github.io/blog/2014/07/03/ack-better-grep/">Comments</a>
+        
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
       </p>
     
   </header>
@@ -158,6 +476,12 @@
 
 <time datetime="2014-07-03T08:06:48+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2014</time>
         
+<<<<<<< HEAD
+=======
+           | <a href="/blog/2014/07/03/octopress-themes/#disqus_thread"
+             data-disqus-identifier="http://roylo.github.io/blog/2014/07/03/octopress-themes/">Comments</a>
+        
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
       </p>
     
   </header>
@@ -212,6 +536,12 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
 
 <time datetime="2014-07-03T01:45:04+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2014</time>
         
+<<<<<<< HEAD
+=======
+           | <a href="/blog/2014/07/03/android-learning-0/#disqus_thread"
+             data-disqus-identifier="http://roylo.github.io/blog/2014/07/03/android-learning-0/">Comments</a>
+        
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
       </p>
     
   </header>
@@ -251,6 +581,12 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
 
 <time datetime="2014-07-02T15:28:58+08:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2014</time>
         
+<<<<<<< HEAD
+=======
+           | <a href="/blog/2014/07/02/android-learning-1/#disqus_thread"
+             data-disqus-identifier="http://roylo.github.io/blog/2014/07/02/android-learning-1/">Comments</a>
+        
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
       </p>
     
   </header>
@@ -290,6 +626,12 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
 
 <time datetime="2014-06-30T14:47:41+08:00" pubdate data-updated="true">Jun 30<span>th</span>, 2014</time>
         
+<<<<<<< HEAD
+=======
+           | <a href="/blog/2014/06/30/git-ji-ben-zhi-ling/#disqus_thread"
+             data-disqus-identifier="http://roylo.github.io/blog/2014/06/30/git-ji-ben-zhi-ling/">Comments</a>
+        
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
       </p>
     
   </header>
@@ -329,6 +671,12 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
 
 <time datetime="2014-06-29T16:23:38+08:00" pubdate data-updated="true">Jun 29<span>th</span>, 2014</time>
         
+<<<<<<< HEAD
+=======
+           | <a href="/blog/2014/06/29/octopress-xin-shou-jiao-xue/#disqus_thread"
+             data-disqus-identifier="http://roylo.github.io/blog/2014/06/29/octopress-xin-shou-jiao-xue/">Comments</a>
+        
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
       </p>
     
   </header>
@@ -356,14 +704,44 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
+<<<<<<< HEAD
   Copyright &copy; 2014 - Your Name -
+=======
+  Copyright &copy; 2014 - RoyLo -
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 </footer>
   
 
+<<<<<<< HEAD
 
+=======
+<script type="text/javascript">
+      var disqus_shortname = 'roylo';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+>>>>>>> ecfb6672f263c65a834448340c19ded52bc824f0
 
 
 
