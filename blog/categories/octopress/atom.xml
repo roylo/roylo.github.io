@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Octopress | Roylo's Note]]></title>
+  <title><![CDATA[Category: octopress | Roylo's Note]]></title>
   <link href="http://roylo.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-09-17T09:53:13+08:00</updated>
+  <updated>2014-09-18T16:09:30+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[roylo]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Octopress Themes]]></title>
+    <title type="html"><![CDATA[octopress themes]]></title>
     <link href="http://roylo.github.io/blog/2014/07/03/octopress-themes/"/>
     <updated>2014-07-03T08:06:48+08:00</updated>
     <id>http://roylo.github.io/blog/2014/07/03/octopress-themes</id>

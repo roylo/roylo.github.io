@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ios | Roylo's Note]]></title>
+  <link href="http://roylo.github.io/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://roylo.github.io/"/>
+  <updated>2014-09-18T16:09:30+08:00</updated>
+  <id>http://roylo.github.io/</id>
+  <author>
+    <name><![CDATA[roylo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[initWithNibName with Storyboard]]></title>
+    <link href="http://roylo.github.io/blog/2014/09/18/initwithnibname-with-storyboard/"/>
+    <updated>2014-09-18T15:57:20+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/09/18/initwithnibname-with-storyboard</id>
+    <content type="html"><![CDATA[<p>在過去 ios 的開發還是使用 xib 來做 UI 的時候</p>
+
+<p>常常會在 <code>initWithNibName</code> 去做一些 initialization, 但是到 storyboard 的時候
+就不會去呼叫這個 function , 那個該寫什麼來取代呢?</p>
+
+<p>舊的寫法(當使用 xib)：
+``` objc
+&ndash; (id) initWithNibName: (NSString <em>)nibNameOrNil bundle:(NSBundle </em>)nibBundleOrNil
+{</p>
+
+<pre><code>self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+if (self) {
+    ....
+}
+
+return self;
+</code></pre>
+
+<p>}
+<code>
+新的寫法(當使用 storyboard)：
+</code> objc
+&ndash; (id)initWithCoder:(NSCoder *)aDecoder
+{</p>
+
+<pre><code>self = [super initWithCoder:aDecoder];
+if (self) {
+    ....
+}
+
+return self;
+</code></pre>
+
+<p>}
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

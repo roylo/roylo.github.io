@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Git | Roylo's Note]]></title>
+  <title><![CDATA[Category: git | Roylo's Note]]></title>
   <link href="http://roylo.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-09-17T09:53:13+08:00</updated>
+  <updated>2014-09-18T16:09:30+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[roylo]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Git 基本指令]]></title>
+    <title type="html"><![CDATA[git 基本指令]]></title>
     <link href="http://roylo.github.io/blog/2014/06/30/git-ji-ben-zhi-ling/"/>
     <updated>2014-06-30T14:47:41+08:00</updated>
     <id>http://roylo.github.io/blog/2014/06/30/git-ji-ben-zhi-ling</id>
