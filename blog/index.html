@@ -9,12 +9,9 @@
 
 <meta name="author" content="roylo"> 
 
-<meta name="description" content="在過去 ios 的開發還是使用 xib 來做 UI 的時候 常常會在 initWithNibName 去做一些 initialization, 但是到 storyboard 的時候
-就不會去呼叫這個 function , 那個該寫什麼來取代呢? 舊的寫法(當使用 xib)： 1
-2
-3
-4
-5 &hellip;"> <meta name="keywords" content="">
+<meta name="description" content="在學習 ios programming 的過程中, 對 frames &amp; bounds 有點疑問
+查了一下 frames 是指對 superview 坐標系統的位置
+bounds 是指對 local 坐標系統的位置 可以看下面這張圖： default bounds 的原點都是在 (0,0 &hellip;"> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -107,6 +104,63 @@ $(document).ready(
     <article class="post">
 	<h2 class="title">
 		
+		<a href="/blog/2014/09/19/frame-vs-bounds-in-ios-programming/">
+		
+			Frame vs. Bounds in IOS Programming</a>
+	</h2>
+	<div class="entry-content">
+		<p>在學習 ios programming 的過程中, 對 frames &amp; bounds 有點疑問
+查了一下</p>
+
+<ul>
+<li>frames 是指對 superview 坐標系統的位置</li>
+<li>bounds 是指對 local 坐標系統的位置</li>
+</ul>
+
+
+<p>可以看下面這張圖：
+<img class="center" src="/images/Frame_bounds.png"></p>
+
+<ul>
+<li>default bounds 的原點都是在 (0,0)</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-19T10:07:06+08:00" pubdate data-updated="true">Sep 19<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/ios/'>ios</a>
+
+</div>
+
+
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
 		<a href="/blog/2014/09/18/initwithnibname-with-storyboard/">
 		
 			initWithNibName With Storyboard</a>
@@ -191,42 +245,6 @@ $(document).ready(
 	<a class='category' href='/blog/categories/ios/'>ios</a>
 
 </div>
-
-
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/09/17/zai-xin-ji-qi-shang-zhong-xin-chan-sheng-octopress-blog/">
-		
-			在新機器上重新產生 Octopress Blog</a>
-	</h2>
-	<div class="entry-content">
-		<p>test</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-09-17T09:38:34+08:00" pubdate data-updated="true">Sep 17<span>th</span>, 2014</time></div>
-	
 
 
 	

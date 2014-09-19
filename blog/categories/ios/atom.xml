@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ios | Roylo's Note]]></title>
   <link href="http://roylo.github.io/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-09-18T16:09:30+08:00</updated>
+  <updated>2014-09-19T10:19:48+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[roylo]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[frame vs. bounds in IOS programming]]></title>
+    <link href="http://roylo.github.io/blog/2014/09/19/frame-vs-bounds-in-ios-programming/"/>
+    <updated>2014-09-19T10:07:06+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/09/19/frame-vs-bounds-in-ios-programming</id>
+    <content type="html"><![CDATA[<p>在學習 ios programming 的過程中, 對 frames &amp; bounds 有點疑問
+查了一下</p>
+
+<ul>
+<li>frames 是指對 superview 坐標系統的位置</li>
+<li>bounds 是指對 local 坐標系統的位置</li>
+</ul>
+
+
+<p>可以看下面這張圖：
+<img class="center" src="/images/Frame_bounds.png"></p>
+
+<ul>
+<li>default bounds 的原點都是在 (0,0)</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[initWithNibName with Storyboard]]></title>
