@@ -9,9 +9,7 @@
 
 <meta name="author" content="roylo"> 
 
-<meta name="description" content="在學習 ios programming 的過程中, 對 frames &amp; bounds 有點疑問
-查了一下 frames 是指對 superview 坐標系統的位置
-bounds 是指對 local 坐標系統的位置 可以看下面這張圖： default bounds 的原點都是在 (0,0 &hellip;"> <meta name="keywords" content="">
+<meta name="description" content="今天在測試公司的 android project 的時候，跑 demo app eclipse 一直掛點 最後會出現 GC overhead limit exceeded in Eclipse 查了一下發現是給 eclipse instance 的記憶體用量不夠 可以調整設定來 fix &hellip;"> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -99,6 +97,109 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/09/19/gc-overhead-limit-exceeded-in-eclipse/">
+		
+			GC Overhead Limit Exceeded in Eclipse</a>
+	</h2>
+	<div class="entry-content">
+		<p>今天在測試公司的 android project 的時候，跑 demo app eclipse 一直掛點</p>
+
+<p>最後會出現 <code>GC overhead limit exceeded in Eclipse</code></p>
+
+<p>查了一下發現是給 eclipse instance 的記憶體用量不夠</p>
+
+<p>可以調整設定來 fix</p>
+
+<p>設定檔的位置在 eclipse 安裝路徑裡面的 <code>eclipse.ini</code></p>
+
+<p>找一下就可以找到</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-startup
+</span><span class='line'>plugins/org.eclipse.equinox.launcher_1.3.0.v20130327-1440.jar
+</span><span class='line'>--launcher.library
+</span><span class='line'>plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.200.v20140116-2212
+</span><span class='line'>-product
+</span><span class='line'>org.eclipse.epp.package.jee.product
+</span><span class='line'>--launcher.defaultAction
+</span><span class='line'>openFile
+</span><span class='line'>-showsplash
+</span><span class='line'>org.eclipse.platform
+</span><span class='line'>--launcher.XXMaxPermSize
+</span><span class='line'>256m
+</span><span class='line'>--launcher.defaultAction
+</span><span class='line'>openFile
+</span><span class='line'>--launcher.appendVmargs
+</span><span class='line'>-vmargs
+</span><span class='line'>-Dosgi.requiredJavaVersion=1.6
+</span><span class='line'>-XX:MaxPermSize=256m
+</span><span class='line'>-Xms40m
+</span><span class='line'>-Xmx512m</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><code>xms</code> 指的是一開始 init 給的記憶體用量</li>
+<li><code>xmx</code> 指的是最多可以用到的記憶體用量</li>
+<li><code>xx</code> 原文是 Permanent Generation defines the memory allocated to keep compiled class files , 其實不太了解</li>
+</ul>
+
+
+<p>最後我調整 <code>Xms512m</code>, <code>Xmx1024m</code>, <code>XX:MaxPermSize=1024m</code>, 這樣再去 run demo program 就可以囉~</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-19T14:22:44+08:00" pubdate data-updated="true">Sep 19<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/android/'>android</a>, <a class='category' href='/blog/categories/eclipse/'>eclipse</a>
+
+</div>
+
+
+	
+</div></article>
 
 
     <article class="post">
