@@ -4,7 +4,7 @@
   <title><![CDATA[Category: xcode | Roylo's Note]]></title>
   <link href="http://roylo.github.io/blog/categories/xcode/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-09-30T00:06:59+08:00</updated>
+  <updated>2014-09-30T00:09:08+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[roylo]]></name>
@@ -18,9 +18,9 @@
     <link href="http://roylo.github.io/blog/2014/09/29/preserve-folder-reference-in-pod/"/>
     <updated>2014-09-29T23:57:54+08:00</updated>
     <id>http://roylo.github.io/blog/2014/09/29/preserve-folder-reference-in-pod</id>
-    <content type="html"><![CDATA[<p>最近開發 ios project 有使用到 cocoapod 來整合第三方 source 和 static library
-但是卻一直苦惱於整合進來的 pod static library folder reference 會跑掉
-今天找到解法可以使用 cocoapod 的 subspec 來定義
+    <content type="html"><![CDATA[<p>最近開發 ios project 有使用到 cocoapod 來整合第三方 source 和 static library<br/>
+但是卻一直苦惱於整合進來的 pod static library folder reference 會跑掉<br/>
+今天找到解法可以使用 cocoapod 的 subspec 來定義<br/>
 用法如下：</p>
 
 <ul>
@@ -54,7 +54,7 @@ end
 </ul>
 
 
-<p>這樣在使用到這個 pod project 的時候，xcode 就會依照 subspec 去建立 group
+<p>這樣在使用到這個 pod project 的時候，xcode 就會依照 subspec 去建立 group<br/>
 詳細的 cocoapod subspec 用法可以參照官網 <a href="http://guides.cocoapods.org/syntax/podspec.html#subspec">cocoapod subspec</a></p>
 ]]></content>
   </entry>
