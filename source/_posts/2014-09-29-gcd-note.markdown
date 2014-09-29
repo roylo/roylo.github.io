@@ -1,0 +1,39 @@
+---
+layout: post
+title: "GCD note - introduction"
+date: 2014-09-29 09:33:56 +0800
+comments: true
+categories: [ios, thread]
+---
+
+因為工作上的需要，需要多了解一下 ios 下的 GCD (Grand Central Dispatcher)，所以寫一篇 note 來記錄。
+
+## Asynchronous
+- 基本上 GCD 可以用來做非同步的應用，避免一些耗時長的工作 block 使用者的操作
+- Apple 在 Mac OS 10.7 和 IOS 4.0 之後提供 GCD 的機制，將多工處理的 thread 統一交給 OS 處理，提供更好的效能。
+- 根據官方文件的說法，GCD 並不限定只使用在 system-level 的程式，但是當我們考慮在更上層的程式使用之前，應該優先考量 Cocoa 內提供的類似功能 (NSOperation and block objects)，可以參考 [Concurrency Programming Guide](https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091)
+
+## Dispatch Queues
+GCD 提供並管理 FIFO queues 讓我們的 application 可以提交 block objects，進入 queue 裡的 block object 會由系統管理的 thread pool 找出 thread 執行。因此無法保證是哪個 thread 執行哪個 task。
+
+GCD 提供三種 queue
+
+1. Main: task 會在 application main thread 依序執行
+1. Concurrent: task 會以 FIFO 的順序從 queue 取出，但是同時執行，可能以任何順序結束執行。
+1. Serial: 以 FIFO 的順序一次只執行一個 task
+
+### main queue
+Main queue 是自動在 application 執行的時候由系統建立，可以以下列三種方式提交 block objects 給 main queue。
+
+1. Calling `dispatch_main`
+2. Calling `UIApplicationMain (IOS) or NSApplicationMain (OS X)`
+3. Using a `CFRunLoopRef` on the main thread
+
+### concurrent queue
+GCD 會自動 create 四條 concurrent dispatch queues (ios 5 或是 OSX 10.7 之前是三條)，這是全域的 queue 可以直接被 application 使用。差別只有在 queue 的 priority level。
+透過 `dispatch_get_global_queue` 來使用。OSX 10.7 和 iOS 4.3 之後可以自行建立額外的 concurrent queues。
+
+### serial queue
+Serial queue 可以確保執行的順序，建立不同的 queue 去處理不同的事情。application 必須自行建立與管理 serial queues，可以開任意條，但是不要用它來取代 concurrent queue 同時執行多個 tasks。
+
+
