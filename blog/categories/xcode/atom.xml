@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: xcode | Roylo's Note]]></title>
+  <link href="http://roylo.github.io/blog/categories/xcode/atom.xml" rel="self"/>
+  <link href="http://roylo.github.io/"/>
+  <updated>2014-09-30T00:06:59+08:00</updated>
+  <id>http://roylo.github.io/</id>
+  <author>
+    <name><![CDATA[roylo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[preserve folder reference in pod]]></title>
+    <link href="http://roylo.github.io/blog/2014/09/29/preserve-folder-reference-in-pod/"/>
+    <updated>2014-09-29T23:57:54+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/09/29/preserve-folder-reference-in-pod</id>
+    <content type="html"><![CDATA[<p>最近開發 ios project 有使用到 cocoapod 來整合第三方 source 和 static library
+但是卻一直苦惱於整合進來的 pod static library folder reference 會跑掉
+今天找到解法可以使用 cocoapod 的 subspec 來定義
+用法如下：</p>
+
+<ul>
+<li><p>在 workspace.podspec 檔案裡面設定 folder structure
+```
+s.source_files  = &ldquo;CrystalSDK&rdquo;, &ldquo;CrystalSDK/*.{h,m}&rdquo;
+s.exclude_files = &ldquo;&rdquo;</p>
+
+<p>s.public_header_files = &ldquo;CrystalSDK/<em>*/</em>.h&rdquo;</p>
+
+<p>s.subspec &ldquo;Http&rdquo; do |http|
+  http.source_files = &ldquo;CrystalSDK/Http/*.{h,m}&rdquo;
+end</p>
+
+<p>s.subspec &ldquo;Model&rdquo; do |model|
+  model.source_files = &ldquo;CrystalSDK/model/*.{h,m}&rdquo;
+end</p>
+
+<p>s.subspec &ldquo;Util&rdquo; do |util|
+  util.source_files = &ldquo;CrystalSDK/Util/*.{h,m}&rdquo;
+end</p>
+
+<p>s.subspec &ldquo;UI&rdquo; do |ui|
+  ui.source_files = &ldquo;CrystalSDK/UI/*.{h,m}&rdquo;
+end</p>
+
+<p>s.subspec &ldquo;Manager&rdquo; do |manager|
+  manager.source_files = &ldquo;CrystalSDK/Manager/*.{h,m}&rdquo;
+end
+```</p></li>
+</ul>
+
+
+<p>這樣在使用到這個 pod project 的時候，xcode 就會依照 subspec 去建立 group
+詳細的 cocoapod subspec 用法可以參照官網 <a href="http://guides.cocoapods.org/syntax/podspec.html#subspec">cocoapod subspec</a></p>
+]]></content>
+  </entry>
+  
+</feed>

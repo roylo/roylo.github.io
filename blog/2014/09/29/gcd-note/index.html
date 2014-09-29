@@ -1,0 +1,209 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>GCD note - introduction  | Roylo's Note</title>
+
+<meta name="author" content="roylo"> 
+
+<meta name="description" content="因為工作上的需要，需要多了解一下 ios 下的 GCD (Grand Central Dispatcher)，所以寫一篇 note 來記錄。 Asynchronous 基本上 GCD 可以用來做非同步的應用，避免一些耗時長的工作 block 使用者的操作
+Apple 在 Mac OS 10.7 和 &hellip;"> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Roylo's Note" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Roylo's Note</a></h1>
+<h4>Work for the people I love!</h4>
+<nav id="main-nav"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:roylo.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">GCD Note - Introduction</h2>
+	<div class="entry-content"><p>因為工作上的需要，需要多了解一下 ios 下的 GCD (Grand Central Dispatcher)，所以寫一篇 note 來記錄。</p>
+
+<h2>Asynchronous</h2>
+
+<ul>
+<li>基本上 GCD 可以用來做非同步的應用，避免一些耗時長的工作 block 使用者的操作</li>
+<li>Apple 在 Mac OS 10.7 和 IOS 4.0 之後提供 GCD 的機制，將多工處理的 thread 統一交給 OS 處理，提供更好的效能。</li>
+<li>根據官方文件的說法，GCD 並不限定只使用在 system-level 的程式，但是當我們考慮在更上層的程式使用之前，應該優先考量 Cocoa 內提供的類似功能 (NSOperation and block objects)，可以參考 <a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091">Concurrency Programming Guide</a></li>
+</ul>
+
+
+<h2>Dispatch Queues</h2>
+
+<p>GCD 提供並管理 FIFO queues 讓我們的 application 可以提交 block objects，進入 queue 裡的 block object 會由系統管理的 thread pool 找出 thread 執行。因此無法保證是哪個 thread 執行哪個 task。</p>
+
+<p>GCD 提供三種 queue</p>
+
+<ol>
+<li>Main: task 會在 application main thread 依序執行</li>
+<li>Concurrent: task 會以 FIFO 的順序從 queue 取出，但是同時執行，可能以任何順序結束執行。</li>
+<li>Serial: 以 FIFO 的順序一次只執行一個 task</li>
+</ol>
+
+
+<h3>main queue</h3>
+
+<p>Main queue 是自動在 application 執行的時候由系統建立，可以以下列三種方式提交 block objects 給 main queue。</p>
+
+<ol>
+<li>Calling <code>dispatch_main</code></li>
+<li>Calling <code>UIApplicationMain (IOS) or NSApplicationMain (OS X)</code></li>
+<li>Using a <code>CFRunLoopRef</code> on the main thread</li>
+</ol>
+
+
+<h3>concurrent queue</h3>
+
+<p>GCD 會自動 create 四條 concurrent dispatch queues (ios 5 或是 OSX 10.7 之前是三條)，這是全域的 queue 可以直接被 application 使用。差別只有在 queue 的 priority level。
+透過 <code>dispatch_get_global_queue</code> 來使用。OSX 10.7 和 iOS 4.3 之後可以自行建立額外的 concurrent queues。</p>
+
+<h3>serial queue</h3>
+
+<p>Serial queue 可以確保執行的順序，建立不同的 queue 去處理不同的事情。application 必須自行建立與管理 serial queues，可以開任意條，但是不要用它來取代 concurrent queue 同時執行多個 tasks。</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-29T09:33:56+08:00" pubdate data-updated="true">Sep 29<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/ios/'>ios</a>, <a class='category' href='/blog/categories/thread/'>thread</a>
+
+</div>
+
+
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+<!---	<a class="addthis_counter addthis_pill_style"></a> --->
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    roylo
+
+<br>
+Powered by Octopress.
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ios | Roylo's Note]]></title>
   <link href="http://roylo.github.io/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-09-19T14:33:36+08:00</updated>
+  <updated>2014-09-30T00:06:59+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[roylo]]></name>
@@ -12,6 +12,103 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[preserve folder reference in pod]]></title>
+    <link href="http://roylo.github.io/blog/2014/09/29/preserve-folder-reference-in-pod/"/>
+    <updated>2014-09-29T23:57:54+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/09/29/preserve-folder-reference-in-pod</id>
+    <content type="html"><![CDATA[<p>最近開發 ios project 有使用到 cocoapod 來整合第三方 source 和 static library
+但是卻一直苦惱於整合進來的 pod static library folder reference 會跑掉
+今天找到解法可以使用 cocoapod 的 subspec 來定義
+用法如下：</p>
+
+<ul>
+<li><p>在 workspace.podspec 檔案裡面設定 folder structure
+```
+s.source_files  = &ldquo;CrystalSDK&rdquo;, &ldquo;CrystalSDK/*.{h,m}&rdquo;
+s.exclude_files = &ldquo;&rdquo;</p>
+
+<p>s.public_header_files = &ldquo;CrystalSDK/<em>*/</em>.h&rdquo;</p>
+
+<p>s.subspec &ldquo;Http&rdquo; do |http|
+  http.source_files = &ldquo;CrystalSDK/Http/*.{h,m}&rdquo;
+end</p>
+
+<p>s.subspec &ldquo;Model&rdquo; do |model|
+  model.source_files = &ldquo;CrystalSDK/model/*.{h,m}&rdquo;
+end</p>
+
+<p>s.subspec &ldquo;Util&rdquo; do |util|
+  util.source_files = &ldquo;CrystalSDK/Util/*.{h,m}&rdquo;
+end</p>
+
+<p>s.subspec &ldquo;UI&rdquo; do |ui|
+  ui.source_files = &ldquo;CrystalSDK/UI/*.{h,m}&rdquo;
+end</p>
+
+<p>s.subspec &ldquo;Manager&rdquo; do |manager|
+  manager.source_files = &ldquo;CrystalSDK/Manager/*.{h,m}&rdquo;
+end
+```</p></li>
+</ul>
+
+
+<p>這樣在使用到這個 pod project 的時候，xcode 就會依照 subspec 去建立 group
+詳細的 cocoapod subspec 用法可以參照官網 <a href="http://guides.cocoapods.org/syntax/podspec.html#subspec">cocoapod subspec</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GCD note - introduction]]></title>
+    <link href="http://roylo.github.io/blog/2014/09/29/gcd-note/"/>
+    <updated>2014-09-29T09:33:56+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/09/29/gcd-note</id>
+    <content type="html"><![CDATA[<p>因為工作上的需要，需要多了解一下 ios 下的 GCD (Grand Central Dispatcher)，所以寫一篇 note 來記錄。</p>
+
+<h2>Asynchronous</h2>
+
+<ul>
+<li>基本上 GCD 可以用來做非同步的應用，避免一些耗時長的工作 block 使用者的操作</li>
+<li>Apple 在 Mac OS 10.7 和 IOS 4.0 之後提供 GCD 的機制，將多工處理的 thread 統一交給 OS 處理，提供更好的效能。</li>
+<li>根據官方文件的說法，GCD 並不限定只使用在 system-level 的程式，但是當我們考慮在更上層的程式使用之前，應該優先考量 Cocoa 內提供的類似功能 (NSOperation and block objects)，可以參考 <a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091">Concurrency Programming Guide</a></li>
+</ul>
+
+
+<h2>Dispatch Queues</h2>
+
+<p>GCD 提供並管理 FIFO queues 讓我們的 application 可以提交 block objects，進入 queue 裡的 block object 會由系統管理的 thread pool 找出 thread 執行。因此無法保證是哪個 thread 執行哪個 task。</p>
+
+<p>GCD 提供三種 queue</p>
+
+<ol>
+<li>Main: task 會在 application main thread 依序執行</li>
+<li>Concurrent: task 會以 FIFO 的順序從 queue 取出，但是同時執行，可能以任何順序結束執行。</li>
+<li>Serial: 以 FIFO 的順序一次只執行一個 task</li>
+</ol>
+
+
+<h3>main queue</h3>
+
+<p>Main queue 是自動在 application 執行的時候由系統建立，可以以下列三種方式提交 block objects 給 main queue。</p>
+
+<ol>
+<li>Calling <code>dispatch_main</code></li>
+<li>Calling <code>UIApplicationMain (IOS) or NSApplicationMain (OS X)</code></li>
+<li>Using a <code>CFRunLoopRef</code> on the main thread</li>
+</ol>
+
+
+<h3>concurrent queue</h3>
+
+<p>GCD 會自動 create 四條 concurrent dispatch queues (ios 5 或是 OSX 10.7 之前是三條)，這是全域的 queue 可以直接被 application 使用。差別只有在 queue 的 priority level。
+透過 <code>dispatch_get_global_queue</code> 來使用。OSX 10.7 和 iOS 4.3 之後可以自行建立額外的 concurrent queues。</p>
+
+<h3>serial queue</h3>
+
+<p>Serial queue 可以確保執行的順序，建立不同的 queue 去處理不同的事情。application 必須自行建立與管理 serial queues，可以開任意條，但是不要用它來取代 concurrent queue 同時執行多個 tasks。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[frame vs. bounds in IOS programming]]></title>

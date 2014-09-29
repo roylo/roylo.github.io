@@ -9,7 +9,9 @@
 
 <meta name="author" content="roylo"> 
 
-<meta name="description" content="今天在測試公司的 android project 的時候，跑 demo app eclipse 一直掛點 最後會出現 GC overhead limit exceeded in Eclipse 查了一下發現是給 eclipse instance 的記憶體用量不夠 可以調整設定來 fix &hellip;"> <meta name="keywords" content="">
+<meta name="description" content="最近開發 ios project 有使用到 cocoapod 來整合第三方 source 和 static library
+但是卻一直苦惱於整合進來的 pod static library folder reference 會跑掉
+今天找到解法可以使用 cocoapod 的 subspec &hellip;"> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -97,6 +99,193 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/09/29/preserve-folder-reference-in-pod/">
+		
+			Preserve Folder Reference in Pod</a>
+	</h2>
+	<div class="entry-content">
+		<p>最近開發 ios project 有使用到 cocoapod 來整合第三方 source 和 static library
+但是卻一直苦惱於整合進來的 pod static library folder reference 會跑掉
+今天找到解法可以使用 cocoapod 的 subspec 來定義
+用法如下：</p>
+
+<ul>
+<li>在 workspace.podspec 檔案裡面設定 folder structure</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  s.source_files  = "CrystalSDK", "CrystalSDK/*.{h,m}"
+</span><span class='line'>  s.exclude_files = ""
+</span><span class='line'>
+</span><span class='line'>  s.public_header_files = "CrystalSDK/**/*.h"
+</span><span class='line'>
+</span><span class='line'>  s.subspec "Http" do |http|
+</span><span class='line'>    http.source_files = "CrystalSDK/Http/*.{h,m}"
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  s.subspec "Model" do |model|
+</span><span class='line'>    model.source_files = "CrystalSDK/model/*.{h,m}"
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  s.subspec "Util" do |util|
+</span><span class='line'>    util.source_files = "CrystalSDK/Util/*.{h,m}"
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  s.subspec "UI" do |ui|
+</span><span class='line'>    ui.source_files = "CrystalSDK/UI/*.{h,m}"
+</span><span class='line'>  end
+</span><span class='line'>
+</span><span class='line'>  s.subspec "Manager" do |manager|
+</span><span class='line'>    manager.source_files = "CrystalSDK/Manager/*.{h,m}"
+</span><span class='line'>  end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>這樣在使用到這個 pod project 的時候，xcode 就會依照 subspec 去建立 group
+詳細的 cocoapod subspec 用法可以參照官網 <a href="http://guides.cocoapods.org/syntax/podspec.html#subspec">cocoapod subspec</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-29T23:57:54+08:00" pubdate data-updated="true">Sep 29<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/ios/'>ios</a>, <a class='category' href='/blog/categories/pod/'>pod</a>, <a class='category' href='/blog/categories/xcode/'>xcode</a>
+
+</div>
+
+
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/09/29/gcd-note/">
+		
+			GCD Note - Introduction</a>
+	</h2>
+	<div class="entry-content">
+		<p>因為工作上的需要，需要多了解一下 ios 下的 GCD (Grand Central Dispatcher)，所以寫一篇 note 來記錄。</p>
+
+<h2>Asynchronous</h2>
+
+<ul>
+<li>基本上 GCD 可以用來做非同步的應用，避免一些耗時長的工作 block 使用者的操作</li>
+<li>Apple 在 Mac OS 10.7 和 IOS 4.0 之後提供 GCD 的機制，將多工處理的 thread 統一交給 OS 處理，提供更好的效能。</li>
+<li>根據官方文件的說法，GCD 並不限定只使用在 system-level 的程式，但是當我們考慮在更上層的程式使用之前，應該優先考量 Cocoa 內提供的類似功能 (NSOperation and block objects)，可以參考 <a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091">Concurrency Programming Guide</a></li>
+</ul>
+
+
+<h2>Dispatch Queues</h2>
+
+<p>GCD 提供並管理 FIFO queues 讓我們的 application 可以提交 block objects，進入 queue 裡的 block object 會由系統管理的 thread pool 找出 thread 執行。因此無法保證是哪個 thread 執行哪個 task。</p>
+
+<p>GCD 提供三種 queue</p>
+
+<ol>
+<li>Main: task 會在 application main thread 依序執行</li>
+<li>Concurrent: task 會以 FIFO 的順序從 queue 取出，但是同時執行，可能以任何順序結束執行。</li>
+<li>Serial: 以 FIFO 的順序一次只執行一個 task</li>
+</ol>
+
+
+<h3>main queue</h3>
+
+<p>Main queue 是自動在 application 執行的時候由系統建立，可以以下列三種方式提交 block objects 給 main queue。</p>
+
+<ol>
+<li>Calling <code>dispatch_main</code></li>
+<li>Calling <code>UIApplicationMain (IOS) or NSApplicationMain (OS X)</code></li>
+<li>Using a <code>CFRunLoopRef</code> on the main thread</li>
+</ol>
+
+
+<h3>concurrent queue</h3>
+
+<p>GCD 會自動 create 四條 concurrent dispatch queues (ios 5 或是 OSX 10.7 之前是三條)，這是全域的 queue 可以直接被 application 使用。差別只有在 queue 的 priority level。
+透過 <code>dispatch_get_global_queue</code> 來使用。OSX 10.7 和 iOS 4.3 之後可以自行建立額外的 concurrent queues。</p>
+
+<h3>serial queue</h3>
+
+<p>Serial queue 可以確保執行的順序，建立不同的 queue 去處理不同的事情。application 必須自行建立與管理 serial queues，可以開任意條，但是不要用它來取代 concurrent queue 同時執行多個 tasks。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-29T09:33:56+08:00" pubdate data-updated="true">Sep 29<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/ios/'>ios</a>, <a class='category' href='/blog/categories/thread/'>thread</a>
+
+</div>
+
+
+	
+</div></article>
 
 
     <article class="post">
@@ -589,53 +778,10 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
 	
 </div></article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/06/29/octopress-xin-shou-jiao-xue/">
-		
-			Octopress 新手教學</a>
-	</h2>
-	<div class="entry-content">
-		<p>會寫這篇純粹是給健忘的自己怎麼使用 Octopress, 至少把一些基礎寫出來免得老是忘記重看<br/>
-首先從如何設定 Octopress 開始, 可以參考他們的<a href="http://octopress.org/">官網</a><br/>
-讓可愛的小章魚教導你XD</p>
-
-
-		
-		<a href="/blog/2014/06/29/octopress-xin-shou-jiao-xue/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-29T16:23:38+08:00" pubdate data-updated="true">Jun 29<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/octopress/'>Octopress</a>
-
-</div>
-
-
-	
-</div></article>
-
 <nav id="pagenavi">
     
+    
+        <a href="/blog/page/2/" class="next">Next</a>
     
     <div class="center"><a href="/archives">Blog Archives</a></div>
 </nav></div>
