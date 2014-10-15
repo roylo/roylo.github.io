@@ -9,9 +9,9 @@
 
 <meta name="author" content="roylo"> 
 
-<meta name="description" content="最近開發 ios project 有使用到 cocoapod 來整合第三方 source 和 static library
-但是卻一直苦惱於整合進來的 pod static library folder reference 會跑掉
-今天找到解法可以使用 cocoapod 的 subspec &hellip;"> <meta name="keywords" content="">
+<meta name="description" content="最近因為工作需要利用 pod 寫了一個 static library, 這個 static lib 本身有使用其他的 pod library
+當我要把新的這個 static lib code 在跟現有的 project 整合的時候遇到不少問題
+所以特別記錄一下 首先先寫好 static &hellip;"> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -99,6 +99,94 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/10/15/zheng-he-pod-static-library-jin-yi-you-de-project/">
+		
+			整合 Pod Static Library 進已有的 Project</a>
+	</h2>
+	<div class="entry-content">
+		<p>最近因為工作需要利用 pod 寫了一個 static library, 這個 static lib 本身有使用其他的 pod library<br/>
+當我要把新的這個 static lib code 在跟現有的 project 整合的時候遇到不少問題<br/>
+所以特別記錄一下</p>
+
+<ul>
+<li>首先先寫好 static library Podfile, 並執行 <code>pod install</code> or <code>pod update</code></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Uncomment this line to define a global platform for your project
+</span><span class='line'># platform :ios, “7.0”
+</span><span class='line'>
+</span><span class='line'>target “CrystalSDK” do
+</span><span class='line'>pod ‘AFDownloadRequestOperation’
+</span><span class='line'>pod ‘SSZipArchive’
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>寫好 static library 的 xxxx.podspec, dependency 記得要寫 3rd party 的 pod lib</li>
+<li>在要整合 project 的資料夾寫 Podfile, 要注意的是 target 是針對 project 裡要 build 的 target 才會整合 pod</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Uncomment this line to define a global platform for your project
+</span><span class='line'># platform :ios, “6.0”
+</span><span class='line'>
+</span><span class='line'>target “AppleDailyNextGen” do
+</span><span class='line'>pod ‘CrystalSDK’, :path =&gt; ‘../CrystalSDK/’
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+
+		
+		<a href="/blog/2014/10/15/zheng-he-pod-static-library-jin-yi-you-de-project/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-15T09:10:46+08:00" pubdate data-updated="true">Oct 15<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/ios/'>ios</a>, <a class='category' href='/blog/categories/pod/'>pod</a>, <a class='category' href='/blog/categories/xcode/'>xcode</a>
+
+</div>
+
+
+	
+</div></article>
 
 
     <article class="post">
@@ -728,49 +816,6 @@ ps. 應該寫一隻 cron 一個月自動換一次之類的XD</p>
 <div class="tags">
 
 	<a class='category' href='/blog/categories/android/'>Android</a>
-
-</div>
-
-
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/06/30/git-ji-ben-zhi-ling/">
-		
-			Git 基本指令</a>
-	</h2>
-	<div class="entry-content">
-		<p>記錄一下工作上用到的 git 指令, 免得老是在查 Orz</p>
-
-
-		
-		<a href="/blog/2014/06/30/git-ji-ben-zhi-ling/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-30T14:47:41+08:00" pubdate data-updated="true">Jun 30<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/git/'>git</a>
 
 </div>
 

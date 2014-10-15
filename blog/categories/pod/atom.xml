@@ -4,7 +4,7 @@
   <title><![CDATA[Category: pod | Roylo's Note]]></title>
   <link href="http://roylo.github.io/blog/categories/pod/atom.xml" rel="self"/>
   <link href="http://roylo.github.io/"/>
-  <updated>2014-09-30T00:09:08+08:00</updated>
+  <updated>2014-10-15T10:18:28+08:00</updated>
   <id>http://roylo.github.io/</id>
   <author>
     <name><![CDATA[roylo]]></name>
@@ -12,6 +12,119 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[整合 pod static library 進已有的 project]]></title>
+    <link href="http://roylo.github.io/blog/2014/10/15/zheng-he-pod-static-library-jin-yi-you-de-project/"/>
+    <updated>2014-10-15T09:10:46+08:00</updated>
+    <id>http://roylo.github.io/blog/2014/10/15/zheng-he-pod-static-library-jin-yi-you-de-project</id>
+    <content type="html"><![CDATA[<p>最近因為工作需要利用 pod 寫了一個 static library, 這個 static lib 本身有使用其他的 pod library<br/>
+當我要把新的這個 static lib code 在跟現有的 project 整合的時候遇到不少問題<br/>
+所以特別記錄一下</p>
+
+<ul>
+<li>首先先寫好 static library Podfile, 並執行 <code>pod install</code> or <code>pod update</code>
+```
+
+<h1>Uncomment this line to define a global platform for your project</h1>
+
+<h1>platform :ios, “7.0”</h1></li>
+</ul>
+
+
+<p>target “CrystalSDK” do
+pod ‘AFDownloadRequestOperation’
+pod ‘SSZipArchive’
+end
+```</p>
+
+<ul>
+<li>寫好 static library 的 xxxx.podspec, dependency 記得要寫 3rd party 的 pod lib</li>
+<li>在要整合 project 的資料夾寫 Podfile, 要注意的是 target 是針對 project 裡要 build 的 target 才會整合 pod
+```
+
+<h1>Uncomment this line to define a global platform for your project</h1>
+
+<h1>platform :ios, “6.0”</h1></li>
+</ul>
+
+
+<p>target “AppleDailyNextGen” do
+pod ‘CrystalSDK’, :path => ‘../CrystalSDK/’
+end
+```</p>
+
+<!-- more -->
+
+
+<ul>
+<li>在 project 資料夾下執行 <code>pod install</code>, 在這裡我遇到了第一個問題</li>
+</ul>
+
+
+<p><img class="center" src="/images/pod_integration/PodOverwriteSettingDefine.png"></p>
+
+<ul>
+<li>解決的方法就是如同上面寫的, 在 project 的 target 裡的 build setting 都加上 <code>$(inherited)</code></li>
+</ul>
+
+
+<p><img class="center" src="/images/pod_integration/BuildSetting.png"></p>
+
+<ul>
+<li>接下來我遇到了 link 不到 static library .a 檔的問題，我的 .a 檔叫做 <code>libPods-(target_name).a</code>，我猜這是因為現在我用的是 source code 整合，並非先 compile 出 .a 檔，所以才會找不到</li>
+<li>解決的方法是在 target scheme 的 build 裡把 pod 也加進去，並且在 project 之前先 build</li>
+</ul>
+
+
+<p><img class="center" src="/images/pod_integration/TargetScheme.png">
+<img class="center" src="/images/pod_integration/AddPodToBuild.png"></p>
+
+<ul>
+<li>接著就是要確認 target 的 build phase 裡有加上你的 libPods-(target_name).a 檔</li>
+</ul>
+
+
+<p><img class="center" src="/images/pod_integration/BuildPhaseLibrary.png"></p>
+
+<ul>
+<li>這時候再 compile 理論上就可以了! 但是有個例外，就是你的 project 不可以有使用跟 static lib 裡面一樣 3rd party library。</li>
+<li>以我的例子來說，我用到了 AFNetworking 這個 Lib ，結果就是 compile 時會說有 duplicate symbolic link errors ，我上網找了很久才找到下面的解法，可以參考這個 blog</li>
+</ul>
+
+
+<p><a href="http://blog.sigmapoint.pl/avoiding-dependency-collisions-in-ios-static-library-managed-by-cocoapods">Avoiding dependency collisions in iOS static library managed by CocoaPods</a></p>
+
+<p>簡單用法：<br/>
+&ndash; 用這個 <a href="https://gist.github.com/roylo/ba655589b7759100c14d">avoid_collision.sh</a> 放到 pod 的 build phase 裡的 run script，跑一次之後可以產生一個 <code>NamespacedDependencies.h</code> 檔裡面都是 macro</p>
+
+<p><img class="center" src="/images/pod_integration/run_script_phase_added_to_pods.png"></p>
+
+<ul>
+<li>在 static lib 裡的 pch 檔 import 這個 <code>NamespacedDependencies.h</code></li>
+</ul>
+
+
+<p><img class="center" src="/images/pod_integration/ImportNamespaceHeaderToStaticLib.png"></p>
+
+<ul>
+<li>在每一個 3rd party 的 pch 檔也 import 這個 <code>NamespacedDependencies.h</code></li>
+</ul>
+
+
+<p><img class="center" src="/images/pod_integration/ImportNamespaceHeaderTo3rdPartyLib.png"></p>
+
+<ul>
+<li>加完之後可以看一下用到這些 class 的字顏色有沒有變成咖啡色 (用到 macro), 或是 command+click 連過去看看</li>
+<li>最後再 compile 理論上就可以解決 duplicate symbolic link 的問題了</li>
+</ul>
+
+
+<p>光是弄這些環境我就搞了快一天，中間也試過先包成 .a 檔直接放進 project。<br/>
+但是這樣實在是 debug 不方便<br/>
+可能有些步驟還少記錄，因為當天什麼方法幾乎都嘗試了 orz</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[preserve folder reference in pod]]></title>
